@@ -1,0 +1,9 @@
+<script src="{{asset('assets//js/backgroundVideo.js')}}"></script>
+<script src="{{asset('assets//js/custom.js')}}"></script>
+<script src="{{asset('assets//js/echarts.min.js')}}"></script>
+<script src="{{asset('assets//js/main.min.js')}}"></script>
+<script src="{{asset('assets//js/map-init.js')}}"></script>
+<script src="{{asset('assets//js/script.js')}}"></script>
+<script src="{{asset('assets//js/userincr.js')}}"></script>
+<script src="{{asset('assets//js/world.js')}}"></script>
+<script src="{{asset('assets//js/strip.pkgd.min.js')}}"></script>

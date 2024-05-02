@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="{{asset('assets//css/color.css')}}">
     <link rel="stylesheet" href="{{asset('assets//css/responsive.css')}}">
 
-    
+    @include('layouts.includes.javascripts')
     
 </head>
 <body>
-        
+    <div class="theme-layout">
+        @include('layouts.includes.header')
+        @stack('bodycontent','')
+    </div>
 </body>
 </html>
 
