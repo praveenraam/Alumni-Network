@@ -299,7 +299,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn-view btn-load-more">Load More</button>
                             </div>
                         </div>
                     </div>
