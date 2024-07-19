@@ -7,11 +7,11 @@
         <li>
           <a href="#" title>Home</a>
           <ul>
-            <li><a href="index.html" title>Home Social</a></li>
+            {{-- <li><a href="index.html" title>Home Social</a></li>
             <li><a href="index2.html" title>Home Social 2</a></li>
             <li><a href="index-company.html" title>Home Company</a></li>
             <li><a href="landing.html" title>Login page</a></li>
-            <li><a href="logout.html" title>Logout Page</a></li>
+            <li><a href="logout.html" title>Logout Page</a></li> --}}
             <li><a href="newsfeed.html" title>news feed</a></li>
           </ul>
         </li>

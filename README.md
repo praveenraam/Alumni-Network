@@ -155,4 +155,4 @@ The flowchart illustrates the navigation paths of different user types within th
 
 #### 8.3 Admin - Website Flow 
 
-![](https://lh7-us.googleusercontent.com/docsz/AD_4nXdNeynC48Qds2qb-Z5y_l2IW9uRAC8CqO0giihyLdwMLkGOqtcHqlVYpvyMHGoT0fvqiZWj7ExgKTwvsefEm1IIZ1tcJZOltXcZ57YPWNgIH1xouSiAYJ4e-GSIjvXQ7KWrxLyz_9DBjodF_0Sr23UMAuyh?key=YUpbXc1jJiSm8V2Y8hvaAQ)**
+![](https://lh7-us.googleusercontent.com/docsz/AD_4nXdNeynC48Qds2qb-Z5y_l2IW9uRAC8CqO0giihyLdwMLkGOqtcHqlVYpvyMHGoT0fvqiZWj7ExgKTwvsefEm1IIZ1tcJZOltXcZ57YPWNgIH1xouSiAYJ4e-GSIjvXQ7KWrxLyz_9DBjodF_0Sr23UMAuyh?key=YUpbXc1jJiSm8V2Y8hvaAQ)

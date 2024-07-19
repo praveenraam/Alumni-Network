@@ -1,27 +1,37 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'login']);
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin', [AdminLoginController::class, 'index']);
 });
 
-// Authentication Pages
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/adminAuth',function(){
-    return view('auth.admin-auth');
-});
-Route::get('/profile',function(){
-    return view('profile.timeline');
-});
-Route::get('/mentee',function(){
-    return view('mentee.mentee');
-});
-Route::get('/tasks',function(){
-    return view('mentee.viewTask');
-});
-Route::get('AlumniTask',function(){
-    return view('mentee.createTasks');
-});
+
+
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+// // Authentication Pages
+// Route::get('/login', function () {
+//     return view('auth.login');
+// })->name('login');
+// Route::get('/adminAuth',function(){
+//     return view('auth.admin-auth');
+// });
+// Route::get('/profile',function(){
+//     return view('profile.timeline');
+// });
+// Route::get('/mentee',function(){
+//     return view('mentee.mentee');
+// });
+// Route::get('/tasks',function(){
+//     return view('mentee.viewTask');
+// });
+// Route::get('AlumniTask',function(){
+//     return view('mentee.createTasks');
+// });
