@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\AlumniController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
@@ -8,6 +9,11 @@ Route::post('/admin/login', [AdminLoginController::class, 'login']);
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminLoginController::class, 'index']);
+
+    Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');
+    Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
+    Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
+
 });
 
 
