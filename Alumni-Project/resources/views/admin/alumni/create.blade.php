@@ -18,7 +18,7 @@
                                 <div class="loadMore">
                                     <div class="central-meta">
                                         <div class="editing-info">
-                                          <h5 class="f-title"><i class="ti-info-alt"></i> Create Favourite Page</h5>
+                                          <h5 class="f-title"><i class="ti-info-alt"></i> Create Alumni Account</h5>
                                           <div class="form-group">
                                             @if ($errors->any())
                                                 <div class="alert alert-danger fade-out" id="error-alert">

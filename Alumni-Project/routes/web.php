@@ -15,13 +15,13 @@ Route::post('/alumni/logout',[AlumniLoginController::class,'logout'])->name('alu
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminLoginController::class, 'index']);
 
-    Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');
+    Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index'); // Develop the page to view all the Alumni's list
     Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
 });
 
-Route::group(['middleware' => ['auth:alumni']], function () {
+Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni',function () {
         return view('index');
     })->name('alumni.index');
