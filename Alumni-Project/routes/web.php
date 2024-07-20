@@ -2,10 +2,15 @@
 
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\Auth\AlumniLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
+
+Route::get('/login',[AlumniLoginController::class,'showLoginForm'])->name('alumni.login');
+Route::post('/alumni/login',[AlumniLoginController::class,'login']);
+Route::post('/alumni/logout',[AlumniLoginController::class,'logout'])->name('alumni.logout');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminLoginController::class, 'index']);
@@ -14,6 +19,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
+});
+
+Route::group(['middleware' => ['auth:alumni']], function () {
+    Route::get('/alumni',function () {
+        return view('index');
+    })->name('alumni.index');
 });
 
 

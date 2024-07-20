@@ -18,6 +18,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'alumni' => [
+            'driver' => 'session',
+            'provider' => 'alumni',
+        ],
     ],
 
     'providers' => [
@@ -30,6 +34,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
+        'alumni' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Alumni::class,
+        ],  
     ],
 
     'passwords' => [
