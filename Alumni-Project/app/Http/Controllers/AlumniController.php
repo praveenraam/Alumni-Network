@@ -9,7 +9,7 @@ use PDO;
 
 class AlumniController extends Controller
 {
-    public function index(){
+    public function AdminViewList(){
         $alumni = Alumni::all();
         return view('admin.alumni.view',compact('alumni'));
     }

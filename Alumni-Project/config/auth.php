@@ -22,6 +22,10 @@ return [
             'driver' => 'session',
             'provider' => 'alumni',
         ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
     'providers' => [
@@ -37,7 +41,11 @@ return [
         'alumni' => [
             'driver' => 'eloquent',
             'model' => App\Models\Alumni::class,
-        ],  
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
     ],
 
     'passwords' => [

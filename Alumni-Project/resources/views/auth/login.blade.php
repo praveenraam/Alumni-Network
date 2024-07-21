@@ -97,7 +97,7 @@
 
           <form method="post">
             <div class="form-group button-container">
-              <a href="" class="google-button">
+              <a href="{{ route('auth.google') }}" class="google-button">
                   <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon">
                   Sign in with Google
               </a>              

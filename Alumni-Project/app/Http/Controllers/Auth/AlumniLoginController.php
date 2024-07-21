@@ -34,4 +34,9 @@ class AlumniLoginController extends Controller
         return redirect()->route('alumni.login');
     }
 
+    public function index()
+    {
+        return view('index'); // Ensure this view exists
+    }
+
 }

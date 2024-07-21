@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\Auth\AlumniLoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
@@ -12,19 +13,27 @@ Route::get('/login',[AlumniLoginController::class,'showLoginForm'])->name('alumn
 Route::post('/alumni/login',[AlumniLoginController::class,'login']);
 Route::post('/alumni/logout',[AlumniLoginController::class,'logout'])->name('alumni.logout');
 
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminLoginController::class, 'index']);
 
-    Route::get('/admin/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index'); // Develop the page to view all the Alumni's list
+    Route::get('/admin/alumni', [AlumniController::class, 'AdminViewList'])->name('admin.alumni.index'); // Develop the page to view all the Alumni's list
     Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
-    Route::get('/alumni',function () {
-        return view('index');
-    })->name('alumni.index');
+    Route::get('/alumni',[AlumniController::class, 'index'])->name('alumni.index');
+});
+
+Route::middleware(['auth:student'])->group(function () {
+    Route::get('/student/dashboard', function () {
+        return view('index'); // Ensure this view exists
+    })->name('student.dashboard');
 });
 
 
