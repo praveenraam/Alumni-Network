@@ -5,6 +5,7 @@ use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\Auth\AlumniLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\StudentLoginController;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
@@ -13,8 +14,8 @@ Route::get('/login',[AlumniLoginController::class,'showLoginForm'])->name('alumn
 Route::post('/alumni/login',[AlumniLoginController::class,'login']);
 Route::post('/alumni/logout',[AlumniLoginController::class,'logout'])->name('alumni.logout');
 
-Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('/auth/google', [StudentLoginController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [StudentLoginController::class, 'handleGoogleCallback']);
 
 
 Route::middleware(['auth:admin'])->group(function () {
