@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\User;
+use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use PDO;
@@ -13,6 +15,17 @@ class AlumniController extends Controller
         $alumni = Alumni::all();
         return view('admin.alumni.view',compact('alumni'));
     }
+
+    public function profile($id){
+        $alumni = User::find($id);  
+        return view('alumni.profile',compact('alumni'));
+    }
+
+    public function settings($id){
+        $alumni = User::find($id);  
+        return view('alumni.settings',compact('alumni'));
+    }
+
     public function create(){
         return view('admin.alumni.create');
     }
@@ -43,4 +56,9 @@ class AlumniController extends Controller
         // Redirect with success message
         return redirect()->route('admin.alumni.create')->with('success', 'An Alumni was created successfully.');
     }
+
+    public function index(){
+        return view('index');
+    }
+
 }

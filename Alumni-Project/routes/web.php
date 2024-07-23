@@ -29,6 +29,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
 Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni',[AlumniController::class, 'index'])->name('alumni.index');
+
+    Route::get('/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
+    Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
 });
 
 Route::middleware(['auth:student'])->group(function () {
