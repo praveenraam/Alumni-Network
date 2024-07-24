@@ -17,13 +17,47 @@ class AlumniController extends Controller
     }
 
     public function profile($id){
-        $alumni = User::find($id);  
+        $alumni = Alumni::find($id);  
+        if($alumni == null) return redirect()->route('404');
         return view('alumni.profile',compact('alumni'));
     }
 
     public function settings($id){
-        $alumni = User::find($id);  
+        $alumni = Alumni::find($id); 
+        if($alumni == null) return redirect()->route('404'); 
         return view('alumni.settings',compact('alumni'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        
+        $ans = $request->validate([
+            'name' => 'required|string|max:255',
+            'roll_no' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'contact_no' => 'nullable|string|max:20',
+            'date_of_birth' => 'nullable|date',
+            'batch' => 'nullable|string|max:255',
+            'degree' => 'nullable|string|max:255',
+            'department' => 'nullable|string|max:255',
+            'specialization' => 'nullable|string|max:255',
+            'current_job' => 'nullable|string|max:255',
+            'company_name' => 'nullable|string|max:255',
+            'industry' => 'nullable|string|max:255',
+            'experience' => 'nullable|string|max:255',
+            'skills' => 'nullable|string|max:255',
+            'linkedin_profile' => 'nullable|url|max:255',
+            'github_profile' => 'nullable|url|max:255',
+            'mentorship_availability' => 'required|boolean',
+            'area_of_interest' => 'nullable|string|max:255',
+            'webinars_participation' => 'required|boolean',
+            'current_city' => 'nullable|string|max:255',
+            'current_country' => 'nullable|string|max:255',
+        ]);
+        $alumni = Alumni::findOrFail($id);
+        $alumni->update($ans);
+
+        return redirect()->route('alumni.index')->with('success', 'Alumni information updated successfully.');
     }
 
     public function create(){

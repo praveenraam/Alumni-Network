@@ -17,6 +17,9 @@ Route::post('/alumni/logout',[AlumniLoginController::class,'logout'])->name('alu
 Route::get('/auth/google', [StudentLoginController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [StudentLoginController::class, 'handleGoogleCallback']);
 
+Route::get('/404',function() {
+    return view('404');
+})->name('404');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminLoginController::class, 'index']);
@@ -31,7 +34,10 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni',[AlumniController::class, 'index'])->name('alumni.index');
 
     Route::get('/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
+
     Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
+    Route::put('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
+
 });
 
 Route::middleware(['auth:student'])->group(function () {

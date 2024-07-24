@@ -66,111 +66,113 @@
                         <div class="central-meta">
                             <div class="editing-info">
                                 <h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
-                                <form method="post">
+                                <form method="put" action="{{route('alumni.update', $alumni->id)}}">
                                         @csrf
                                         <!-- Personal Information -->
-                                        <div class="form-group">
-                                            <input type="text" name="name" required="required">
+                                        <div class="form-group"> 
+                                            <input type="text" name="name"  value="{{$alumni->name}}" >
                                             <label class="control-label" for="full_name">Full Name</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="roll_no" required="required">
+                                            <input type="text" name="roll_no"  value="{{$alumni->roll_no}}">
                                             <label class="control-label" for="roll_number">Roll Number</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" name="email" required="required">
+                                            <input type="email" name="email"  value="{{$alumni->email}}">
                                             <label class="control-label" for="email">Email Address</label><i class="mtrl-select"></i>
                                         </div>
                                         {{-- <div class="form-group">
-                                            <input type="file" name="profile_picture" required="required">
+                                            <input type="file" name="profile_picture"  >
                                             <label class="control-label" for="profile_picture">Profile Picture</label><i class="mtrl-select"></i>
                                         </div> --}}
                                         <div class="form-group">
-                                            <input type="text" name="contact_number" required="required">
-                                            <label class="control-label" for="contact_number">Contact Number</label><i class="mtrl-select"></i>
+                                            <input type="text" name="contact_no"  value="{{$alumni->contact_no}}">
+                                            <label class="control-label" for="contact_no">Contact Number</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="date" name="date_of_birth" required="required">
+                                            <input type="date" name="date_of_birth"  value="{{$alumni->date_of_birth}}">
                                             <label class="control-label" for="date_of_birth">Date of Birth</label><i class="mtrl-select"></i>
                                         </div>
                                     
                                         <!-- Educational Background -->
                                         <div class="form-group">
-                                            <input type="text" name="batch" required="required">
+                                            <input type="text" name="batch" value="{{$alumni->batch}}" >
                                             <label class="control-label" for="batch">Batch (e.g., 2018-2022)</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="degree" required="required">
+                                            <input type="text" name="degree"  value="{{$alumni->degree}}">
                                             <label class="control-label" for="degree">Degree (e.g., B.Tech, M.Tech)</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="department" required="required">
+                                            <input type="text" name="department"  value="{{$alumni->department}}">
                                             <label class="control-label" for="department">Department (e.g., CSE, IT)</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="specialization" required="required">
+                                            <input type="text" name="specialization"  value="{{$alumni->specialization}}">
                                             <label class="control-label" for="specialization">Specialization</label><i class="mtrl-select"></i>
                                         </div>
                                     
                                         <!-- Professional Information -->
                                         <div class="form-group">
-                                            <input type="text" name="current_job_title" required="required">
-                                            <label class="control-label" for="current_job_title">Current Job Title</label><i class="mtrl-select"></i>
+                                            <input type="text" name="current_job"  value="{{$alumni->current_job}}">
+                                            <label class="control-label" for="current_job">Current Job Title</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="company_name" required="required">
+                                            <input type="text" name="company_name" value="{{$alumni->company_name}}" >
                                             <label class="control-label" for="company_name">Company Name</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="industry" required="required">
+                                            <input type="text" name="industry" value="{{$alumni->industry}}" >
                                             <label class="control-label" for="industry">Industry</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="years_of_experience" required="required">
-                                            <label class="control-label" for="years_of_experience">Years of Experience</label><i class="mtrl-select"></i>
+                                            <input type="text" name="experience" value="{{$alumni->experience}}" >
+                                            <label class="control-label" for="experience">Years of Experience</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="skills_expertise" required="required">
-                                            <label class="control-label" for="skills_expertise">Skills and Expertise</label><i class="mtrl-select"></i>
+                                            <input type="text" name="skills" value="{{$alumni->skills}}" >
+                                            <label class="control-label" for="skills">Skills and Expertise</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="url" name="linkedin_profile" required="required">
+                                            <input type="url" name="linkedin_profile" value="{{$alumni->linkedin_profile}}" >
                                             <label class="control-label" for="linkedin_profile">LinkedIn Profile</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="other_professional_networks" required="required">
-                                            <label class="control-label" for="other_professional_networks">Other Professional Networks (e.g., GitHub, Behance)</label><i class="mtrl-select"></i>
+                                            <input type="text" name="github_profile" value="{{$alumni->github_profile}}" >
+                                            <label class="control-label" for="github_profile">GitHub Profile</label><i class="mtrl-select"></i>
                                         </div>
                                     
                                         <!-- Engagement and Interests -->
                                         <div class="form-group">
-                                            <input type="text" name="mentorship_availability" required="required">
+                                            <select id="mentorship_availability" name="mentorship_availability"  >
+                                                <option value="1" {{$alumni->mentorship_availability == 1 ? 'selected' : ''}}>Available</option>
+                                                <option value="0" {{$alumni->mentorship_availability == 0 ? 'selected' : ''}}>Not Available</option>
+                                            </select>
                                             <label class="control-label" for="mentorship_availability">Mentorship Availability</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="areas_of_interest" required="required">
-                                            <label class="control-label" for="areas_of_interest">Areas of Interest (e.g., Startups, Research, Community Service)</label><i class="mtrl-select"></i>
+                                            <input type="text" name="area_of_interest" value="{{$alumni->area_of_interest}}" >
+                                            <label class="control-label" for="area_of_interest">Areas of Interest (e.g., Startups, Research, Community Service)</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="webinars_participation" required="required">
+                                            <select name="webinars_participation" id="webinar_participation">
+                                                <option value="1">Available</option>
+                                                <option value="0">Not Available</option>
+                                            </select>
                                             <label class="control-label" for="webinars_participation">Willingness to participate in webinars, workshops, etc.</label><i class="mtrl-select"></i>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="preferred_communication_channels" required="required">
-                                            <label class="control-label" for="preferred_communication_channels">Preferred Communication Channels (e.g., Email, Phone, Social Media)</label><i class="mtrl-select"></i>
                                         </div>
                                     
                                         <!-- Location Information -->
                                         <div class="form-group">
-                                            <input type="text" name="current_city" required="required">
+                                            <input type="text" name="current_city" value="{{$alumni->current_city}}" >
                                             <label class="control-label" for="current_city">Current City</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="current_country" required="required">
+                                            <input type="text" name="current_country" value="{{$alumni->current_country}}" >
                                             <label class="control-label" for="current_country">Current Country</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="submit-btns">
-                                            <button type="button" class="mtr-btn"><span>Cancel</span></button>
+                                            <button type="button" class="mtr-btn" onclick="window.history.back();"><span>Cancel</span></button>
                                             <button type="submit" class="mtr-btn"><span>Update</span></button>
                                         </div>
                                 </form>
@@ -183,4 +185,22 @@
        </div>
     </div>
  </section>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    var errorAlert = document.getElementById('error-alert');
+    if (errorAlert) {
+
+        setTimeout(function() {
+            errorAlert.style.opacity = '0';
+        }, 5000);
+
+        setTimeout(function() {
+            errorAlert.style.display = 'none';
+        }, 5000); // 1 second after starting the fade out
+    }
+    });
+</script>
+
 @endpush
