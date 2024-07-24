@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\AlumniLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
@@ -41,9 +42,11 @@ Route::middleware(['auth:alumni'])->group(function () {
 });
 
 Route::middleware(['auth:student'])->group(function () {
-    Route::get('/student/dashboard', function () {
-        return view('index'); // Ensure this view exists
-    })->name('student.dashboard');
+    Route::get('/student',[StudentController::class,'index'])->name('student.index');
+
+    Route::get('/student/settings/{id}',[StudentController::class,'settings'])->name('student.settings');
+    Route::post('/student/settings/update/{id}', [StudentController::class, 'update'])->name('student.update');
+
 });
 
 

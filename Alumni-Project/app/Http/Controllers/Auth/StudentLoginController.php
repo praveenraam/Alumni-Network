@@ -39,7 +39,7 @@ class StudentLoginController extends Controller
 
                 Auth::guard('student')->login($authUser);
 
-                return redirect()->intended('/student/dashboard');
+                return redirect()->route('student.index');
             }
         } catch (\Exception $e) {
             return redirect()->route('alumni.login')->withErrors(['login' => 'Unable to login with Google: ' . $e->getMessage()]);
