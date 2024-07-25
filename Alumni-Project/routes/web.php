@@ -37,7 +37,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
 
     Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
-    Route::put('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
+    Route::post('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
 
 });
 

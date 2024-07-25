@@ -13,7 +13,7 @@
                         <div class="central-meta">
                             <div class="editing-info">
                                 <h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
-                                <form method="put" action="{{route('alumni.update', $alumni->id)}}">
+                                <form method="post" action="{{route('alumni.update', $alumni->id)}}">
                                         @csrf
                                         <!-- Personal Information -->
                                         <div class="form-group"> 
@@ -81,7 +81,7 @@
                                             <label class="control-label" for="skills">Skills and Expertise</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
-                                            <input type="url" name="linkedin_profile" value="{{$alumni->linkedin_profile}}" >
+                                            <input type="text" name="linkedin_profile" value="{{$alumni->linkedin_profile}}" >
                                             <label class="control-label" for="linkedin_profile">LinkedIn Profile</label><i class="mtrl-select"></i>
                                         </div>
                                         <div class="form-group">
@@ -106,7 +106,7 @@
                                                 <option value="1">Available</option>
                                                 <option value="0">Not Available</option>
                                             </select>
-                                            <label class="control-label" for="webinars_participation">Willingness to participate in webinars, workshops, etc.</label><i class="mtrl-select"></i>
+                                            <label class="control-label" for="webinars_participation">Willingness to events.</label><i class="mtrl-select"></i>
                                         </div>
                                     
                                         <!-- Location Information -->
