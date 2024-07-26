@@ -32,8 +32,8 @@ class AlumniController extends Controller
     {
         
         $ans = $request->validate([
-            'name' => 'required|string|max:255',
-            'roll_no' => 'required|string|max:255',
+            'name' => 'string|max:255',
+            'roll_no' => 'string|max:255',
             'email' => 'required|email|max:255',
             'contact_no' => 'nullable|string|max:20',
             'date_of_birth' => 'nullable|date',

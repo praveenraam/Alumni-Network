@@ -36,7 +36,7 @@
                 <div class="timeline-info">
                    <ul>
                       <li class="admin-name">
-                         <h5>Janice Griffith</h5>
+                         <h5>  Griffith</h5>
                          <span>department</span>
                       </li>
                       <li>
@@ -82,8 +82,8 @@
                                  <div class="tab-pane fade active show" id="personal_info">
                                     <ul class="basics">
                                        <li><strong>Name : </strong> </i>
-                                          @if($alumni->Name != null)
-                                            <p> {{ $alumni->Name }} </p>
+                                          @if($alumni->name != null)
+                                             {{ $alumni->name }}
                                           @else
                                              Need to set
                                           @endif
@@ -97,7 +97,7 @@
                                        </li>
                                        <li><strong>Email : </strong>
                                           @if($alumni->email != null)
-                                             {{ $alumni->email }}
+                                             <a style="text-transform: lowercase;" href="mailto:{{ $alumni->email }}">{{ $alumni->email }}</a>
                                           @else
                                              Need to set
                                           @endif
@@ -114,14 +114,6 @@
                                           <strong>Date of Birth: </strong>
                                           @if($alumni->date_of_birth != null)
                                               {{ $alumni->date_of_birth }}
-                                          @else
-                                              Need to set
-                                          @endif
-                                      </li>
-                                      <li>
-                                          <strong>Specialization: </strong>
-                                          @if($alumni->specialization != null)
-                                              {{ $alumni->specialization }}
                                           @else
                                               Need to set
                                           @endif
@@ -180,6 +172,14 @@
                                              @endif
                                          </li>
                                          <li>
+                                             <strong>Specialization: </strong>
+                                             @if($alumni->specialization != null)
+                                                 {{ $alumni->specialization }}
+                                             @else
+                                                 Need to set
+                                             @endif
+                                         </li>
+                                         <li>
                                              <strong>Experience: </strong>
                                              @if($alumni->experience != null)
                                                  {{ $alumni->experience }}
@@ -196,19 +196,38 @@
                                              @endif
                                          </li>
                                          <li>
-                                             <strong>LinkedIn Profile: </strong>
-                                             @if($alumni->linkedin_profile != null)
-                                                 {{ $alumni->linkedin_profile }}
-                                             @else
-                                                 Need to set
+                                             <strong>LinkedIn Profile:</strong>
+                                             @if($alumni->linkedin_profile == null)
+                                                Need to set
+                                             @else  
+                                                @php
+                                                   $linkedIn = $alumni->linkedin_profile;
+                                                   $isUrl = strpos($linkedIn, '.com') !== false;
+                                                @endphp
+                                       
+                                                @if($isUrl)
+                                                   <a href="{{ $linkedIn }}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Click to Redirect</a>
+                                                @else
+                                                   {{ $linkedIn }}
+                                                @endif
                                              @endif
                                          </li>
+                                       
                                          <li>
-                                             <strong>GitHub Profile: </strong>
-                                             @if($alumni->github_profile != null)
-                                                 {{ $alumni->github_profile }}
-                                             @else
-                                                 Need to set
+                                             <strong>GitHub Profile:</strong> 
+                                             @if($alumni->github_profile == null)
+                                                Need to set
+                                             @else  
+                                                @php
+                                                   $github = $alumni->github_profile;
+                                                   $isUrl = strpos($github, '.com') !== false;
+                                                @endphp
+                                       
+                                                @if($isUrl)
+                                                   <a href="{{ $github }}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Click to Redirect</a>
+                                                @else
+                                                   {{ $github }}
+                                                @endif
                                              @endif
                                          </li>
                                          <li>

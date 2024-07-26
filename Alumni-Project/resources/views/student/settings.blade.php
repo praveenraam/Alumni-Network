@@ -17,15 +17,15 @@
                                         @csrf
                                         
                                         <!-- Personal Information -->
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <input type="text" name="name" value="{{ $student->name }}" >
                                             <label class="control-label" for="full_name">Name</label><i class="mtrl-select"></i>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <input type="text" name="email" value="{{ $student->email }}" >
                                             <label class="control-label" for="name">email</label><i class="mtrl-select"></i>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group">
                                             <input type="date" name="date_of_birth" value="{{ $student->date_of_birth }}" >
@@ -73,7 +73,6 @@
                                             <label class="control-label" for="cgpa">CGPA</label><i class="mtrl-select"></i>
                                         </div>
 
-                                        <!-- Additional Information -->
                                         <div class="form-group">
                                             <input type="text" name="interests" value="{{ $student->interests }}">
                                             <label class="control-label" for="interests">Interests</label><i class="mtrl-select"></i>
@@ -89,18 +88,20 @@
                                             <label class="control-label" for="programming_languages">Programming Languages Known</label><i class="mtrl-select"></i>
                                         </div>
 
+                                        <!-- Additional Information -->
+
                                         <div class="form-group">
-                                            <input type="url" name="linkedin_profile" value="{{ $student->linkedin_profile }}">
+                                            <input type="text" name="linkedin_profile" value="{{ $student->linkedin_profile }}">
                                             <label class="control-label" for="linkedin_profile">LinkedIn Profile</label><i class="mtrl-select"></i>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="url" name="github_profile" value="{{ $student->github_profile }}">
+                                            <input type="text" name="github_profile" value="{{ $student->github_profile }}">
                                             <label class="control-label" for="github_profile">GitHub Profile</label><i class="mtrl-select"></i>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="url" name="personal_website" value="{{ $student->personal_website }}">
+                                            <input type="text" name="personal_website" value="{{ $student->personal_website }}">
                                             <label class="control-label" for="personal_website">Personal Website/Portfolio</label><i class="mtrl-select"></i>
                                         </div>
 

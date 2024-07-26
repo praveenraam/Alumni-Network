@@ -44,6 +44,8 @@ Route::middleware(['auth:alumni'])->group(function () {
 Route::middleware(['auth:student'])->group(function () {
     Route::get('/student',[StudentController::class,'index'])->name('student.index');
 
+    Route::get('/student/profile/{id}',[StudentController::class,'profile'])->name('student.profile');
+
     Route::get('/student/settings/{id}',[StudentController::class,'settings'])->name('student.settings');
     Route::post('/student/settings/update/{id}', [StudentController::class, 'update'])->name('student.update');
 
