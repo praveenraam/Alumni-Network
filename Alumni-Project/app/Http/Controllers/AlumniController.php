@@ -11,7 +11,7 @@ use PDO;
 
 class AlumniController extends Controller
 {
-    public function AdminViewList(){
+    public function ViewList(){
         $alumni = Alumni::all();
         return view('admin.alumni.view',compact('alumni'));
     }

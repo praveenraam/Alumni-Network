@@ -28,6 +28,11 @@ class StudentController extends Controller
         return view('student.profile',compact('student'));
     }
 
+    public function ViewList(){
+        $students = Student::all();
+        return view('admin.student.view',compact('students'));
+    }
+
     
 public function update(Request $request, $id)
 {

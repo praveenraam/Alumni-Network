@@ -24,35 +24,27 @@
                                                     <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th>Batch</th>
-                                                                <th>Name</th>
                                                                 <th>Roll No</th>
+                                                                <th>Name</th>
                                                                 <th>Email</th>
-                                                                <th>Company</th>
+                                                                <th>Department</th>
+                                                                <th>CGPA</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach($alumni as $alumnus)
+                                                            @foreach($students as $student)
                                                                 <tr>
-                                                                    <td>{{ $alumnus->batch }}</td>
-                                                                    <td><a href="alumni/profile/{{$alumnus->id}}" rel="noopener noreferrer"style="text-decoration: underline;">{{$alumnus->name}}</a></td>
-                                                                    <td>{{ $alumnus->roll_no }}</td>
-                                                                    <td>@if($alumnus->email != null)
-                                                                        {{$alumnus->email}}
-                                                                        @else Not Updated
-                                                                        @endif
-                                                                    </td>
-                                                                    <td>@if($alumnus->company_name != null)
-                                                                        {{$alumnus->company_name}}
-                                                                        @else Not Updated
-                                                                        @endif
-                                                                    </td>
+                                                                    <td>{{ $student->roll_number ?? 'Not Updated' }}</td>
+                                                                    <td><a href="students/profile/{{$student->id}}" rel="noopener noreferrer"style="text-decoration: underline;">{{$student->name}}</a></td>
+                                                                    <td>{{ $student->email }}</td>
+                                                                    <td>{{ $student->department ?? 'Not Updated' }}</td>
+                                                                    <td>{{$student->cgpa ?? 'Not Updated'}}</td>
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>
                                                     </table>
-                                                    @if ($alumni->isEmpty())
-                                                        <p>No alumni found.</p>
+                                                    @if ($students->isEmpty())
+                                                        <p>No Students found.</p>
                                                     @endif
                                                 </div>
                                             </div>

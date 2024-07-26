@@ -23,31 +23,57 @@ Route::get('/404',function() {
 })->name('404');
 
 Route::middleware(['auth:admin'])->group(function () {
+    //Index for Admin
     Route::get('/admin', [AdminLoginController::class, 'index']);
 
-    Route::get('/admin/alumni', [AlumniController::class, 'AdminViewList'])->name('admin.alumni.index'); // Develop the page to view all the Alumni's list
+    // Admin view, create for all alumni 
+    Route::get('/admin/alumni', [AlumniController::class, 'ViewList'])->name('admin.alumni.index');
     Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
+    // Admin view sepatate Alumni profile
+    Route::get('/admin/alumni/profile/{id}',[AlumniController::class,'profile']);
+
+    // Admin everybody's details and seperate profiles : students
+    Route::get('/admin/students',[StudentController::class,'ViewList']);
+    Route::get('/admin/students/profile/{id}',[StudentController::class,'profile']);
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
+    // Index for Alumni
     Route::get('/alumni',[AlumniController::class, 'index'])->name('alumni.index');
 
-    Route::get('/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
+    // View everybody's details and seperate profiles : alumni
+    Route::get('/alumni/alumni',[AlumniController::class,'ViewList']);
+    Route::get('/alumni/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
 
+    // Update details
     Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
     Route::post('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
+
+    //View everybody's details and Students profile
+    Route::get('/alumni/students',[StudentController::class,'ViewList']);
+    Route::get('/alumni/students/profile/{id}',[StudentController::class,'profile']);
 
 });
 
 Route::middleware(['auth:student'])->group(function () {
+    // Index for Student
     Route::get('/student',[StudentController::class,'index'])->name('student.index');
 
-    Route::get('/student/profile/{id}',[StudentController::class,'profile'])->name('student.profile');
+    // View seperate profile
+    Route::get('/student/students/profile/{id}',[StudentController::class,'profile'])->name('student.profile');
 
+    // Update details
     Route::get('/student/settings/{id}',[StudentController::class,'settings'])->name('student.settings');
     Route::post('/student/settings/update/{id}', [StudentController::class, 'update'])->name('student.update');
+
+    // View everybody's details and seperate profiles : alumni
+    Route::get('student/alumni',[AlumniController::class,'ViewList']);
+    Route::get('/student/alumni/profile/{id}',[AlumniController::class,'profile']);
+
+    // View Student profile
+    Route::get('/student/students/profile/{id}',[StudentController::class,'profile']);
 
 });
 
