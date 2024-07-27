@@ -7,6 +7,9 @@ use App\Http\Controllers\Auth\AlumniLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\StudentLoginController;
+use App\Http\Controllers\JobOpeningController;
+use App\Models\Alumni;
+use App\Models\JobOpening;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
@@ -37,6 +40,9 @@ Route::middleware(['auth:admin'])->group(function () {
     // Admin everybody's details and seperate profiles : students
     Route::get('/admin/students',[StudentController::class,'ViewList']);
     Route::get('/admin/students/profile/{id}',[StudentController::class,'profile']);
+
+    // View Jobs
+    Route::get('admin/jobs',[JobOpeningController::class,'viewJobs']);
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
@@ -55,6 +61,10 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/students',[StudentController::class,'ViewList']);
     Route::get('/alumni/students/profile/{id}',[StudentController::class,'profile']);
 
+    //View jobs 
+    Route::get('alumni/jobs',[JobOpeningController::class,'viewJobs'])->name('jobOpenings.index');
+    Route::get('alumni/jobs/create',[JobOpeningController::class,'create']);
+    Route::post('alumni/jobs/store',[JobOpeningController::class,'store'])->name('jobOpenings.store');
 });
 
 Route::middleware(['auth:student'])->group(function () {
@@ -75,30 +85,7 @@ Route::middleware(['auth:student'])->group(function () {
     // View Student profile
     Route::get('/student/students/profile/{id}',[StudentController::class,'profile']);
 
+    //View Jobs
+    Route::get('student/jobs',[JobOpeningController::class,'viewJobs']);
+
 });
-
-
-
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-// // Authentication Pages
-// Route::get('/login', function () {
-//     return view('auth.login');
-// })->name('login');
-// Route::get('/adminAuth',function(){
-//     return view('auth.admin-auth');
-// });
-// Route::get('/profile',function(){
-//     return view('profile.timeline');
-// });
-// Route::get('/mentee',function(){
-//     return view('mentee.mentee');
-// });
-// Route::get('/tasks',function(){
-//     return view('mentee.viewTask');
-// });
-// Route::get('AlumniTask',function(){
-//     return view('mentee.createTasks');
-// });

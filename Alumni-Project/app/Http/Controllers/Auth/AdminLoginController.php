@@ -36,6 +36,6 @@ class AdminLoginController extends Controller
 
     public function index()
     {
-        return view('index'); // Ensure this view exists
+        return view('admin.index'); // Ensure this view exists
     }
 }
