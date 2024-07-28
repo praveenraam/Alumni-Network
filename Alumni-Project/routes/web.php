@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\StudentLoginController;
 use App\Http\Controllers\JobOpeningController;
+use App\Http\Controllers\EventController;
+
 use App\Models\Alumni;
 use App\Models\JobOpening;
 
@@ -43,6 +45,13 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // View Jobs
     Route::get('admin/jobs',[JobOpeningController::class,'viewJobs']);
+
+    // Create events
+    Route::get('admin/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::post('admin/events/store', [EventController::class, 'store'])->name('events.store');
+    // View events
+    Route::get('admin/events', [EventController::class, 'AdminIndex'])->name('admin.events.index');
+    // TODO Viewing the list of students registered
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
@@ -65,6 +74,11 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('alumni/jobs',[JobOpeningController::class,'viewJobs'])->name('jobOpenings.index');
     Route::get('alumni/jobs/create',[JobOpeningController::class,'create']);
     Route::post('alumni/jobs/store',[JobOpeningController::class,'store'])->name('jobOpenings.store');
+
+    // View Events
+    Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
+    // TODO alumni choosing event is not yet done
+
 });
 
 Route::middleware(['auth:student'])->group(function () {
@@ -88,4 +102,7 @@ Route::middleware(['auth:student'])->group(function () {
     //View Jobs
     Route::get('student/jobs',[JobOpeningController::class,'viewJobs']);
 
+    // View events
+    Route::get('student/events', [EventController::class, 'listEventsForStudents'])->name('student.events');
+    // TODO students registering the event is not done
 });

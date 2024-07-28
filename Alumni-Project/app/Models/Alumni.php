@@ -40,6 +40,9 @@ class Alumni extends Authenticatable
         'password','remember_token',
     ];
 
-
+    public function coordinatedEvents()
+    {
+        return $this->hasMany(Event::class, 'coordinator_id');
+    }
 
 }

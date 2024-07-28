@@ -10,7 +10,7 @@
                         <div class="row merged20" id="page-contents">
                             @include('layouts.includes.sidebar')
                             <div class="col-lg-9">
-                                @include('layouts.listPost');
+                                @include('layouts.index');
                             </div>
                         </div>
                     </div>

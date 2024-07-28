@@ -1,4 +1,5 @@
-# Alumni Network
+# Alumni Network 
+![wakatime](https://wakatime.com/badge/user/19d677e9-0da9-4aa1-9d77-1b27177e095d/project/ef1d7902-b057-46dd-bf07-9bf44f20b78b.svg)
 
 ## 1. Introduction : 
 
