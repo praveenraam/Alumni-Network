@@ -12,6 +12,8 @@ use App\Http\Controllers\EventController;
 
 use App\Models\Alumni;
 use App\Models\JobOpening;
+use App\Models\Student;
+use Google\Service\Classroom\StudentContext;
 
 Route::get('/admin/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
@@ -62,6 +64,9 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/alumni',[AlumniController::class,'ViewList']);
     Route::get('/alumni/alumni/profile/{id}',[AlumniController::class,'profile'])->name('alumni.profile');
 
+    //View own profile
+    Route::get('/alumni/myprofile',[AlumniController::class,'ownProfile'])->name('alumni.ownProfile');
+
     // Update details
     Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
     Route::post('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
@@ -98,6 +103,9 @@ Route::middleware(['auth:student'])->group(function () {
 
     // View Student profile
     Route::get('/student/students/profile/{id}',[StudentController::class,'profile']);
+
+    // View own profile
+    Route::get('/student/myprofile',[StudentController::class,'ownProfile']);
 
     //View Jobs
     Route::get('student/jobs',[JobOpeningController::class,'viewJobs']);

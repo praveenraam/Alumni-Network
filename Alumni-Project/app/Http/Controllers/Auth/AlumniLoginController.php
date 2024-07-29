@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class AlumniLoginController extends Controller
 {
@@ -23,6 +25,12 @@ class AlumniLoginController extends Controller
         $credentials = $request->only('roll_no','password');
 
         if(Auth::guard('alumni')->attempt($credentials)){
+
+            $user = Auth::guard('alumni')->user();
+        
+            // Store the user ID in the session
+            Session::put('user_id', $user->id);
+
             return redirect()->intended('/alumni');
         }
 

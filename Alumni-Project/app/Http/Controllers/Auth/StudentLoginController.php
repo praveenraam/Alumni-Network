@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\GoogleService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class StudentLoginController extends Controller
 {
@@ -38,7 +39,7 @@ class StudentLoginController extends Controller
                 );
 
                 Auth::guard('student')->login($authUser);
-
+                Session::put('user_id', $authUser->id);
                 return redirect()->route('student.index');
             }
         } catch (\Exception $e) {

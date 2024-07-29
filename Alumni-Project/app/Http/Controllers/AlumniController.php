@@ -7,6 +7,7 @@ use App\Models\User;
 use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use PDO;
 
 class AlumniController extends Controller
@@ -26,6 +27,16 @@ class AlumniController extends Controller
         $alumni = Alumni::find($id); 
         if($alumni == null) return redirect()->route('404'); 
         return view('alumni.settings',compact('alumni'));
+    }
+
+    public function ownProfile(){
+        $userId = Session::get('user_id');
+
+        if($userId){
+            $alumni = Alumni::find($userId);
+            if($alumni == null) return redirect()->route('404');
+        }
+        return view ('alumni.ownProfile',compact('alumni'));
     }
 
     public function update(Request $request, $id)

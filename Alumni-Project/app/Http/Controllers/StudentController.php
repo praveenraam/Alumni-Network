@@ -8,6 +8,8 @@ use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use PDO;
+use Illuminate\Support\Facades\Session;
+
 
 
 class StudentController extends Controller
@@ -31,6 +33,16 @@ class StudentController extends Controller
     public function ViewList(){
         $students = Student::all();
         return view('admin.student.view',compact('students'));
+    }
+
+    public function ownProfile(){
+        $userId = Session::get('user_id');
+
+        if($userId){
+            $student = Student::find($userId);
+            if($student == null) return redirect()->route('404');
+        }
+        return view('student.ownProfile',compact('student'));
     }
 
     
