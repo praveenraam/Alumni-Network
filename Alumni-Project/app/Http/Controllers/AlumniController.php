@@ -23,7 +23,14 @@ class AlumniController extends Controller
         return view('alumni.profile',compact('alumni'));
     }
 
-    public function settings($id){
+    public function settings(){
+
+        $id = Session::get('user_id');
+
+        if (!$id) {
+            return redirect()->route('404')->withErrors(['error' => 'User ID not found in session.']);
+        }
+
         $alumni = Alumni::find($id); 
         if($alumni == null) return redirect()->route('404'); 
         return view('alumni.settings',compact('alumni'));
@@ -39,8 +46,12 @@ class AlumniController extends Controller
         return view ('alumni.ownProfile',compact('alumni'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $id = Session::get('user_id');
+        if (!$id) {
+            return redirect()->route('404')->withErrors(['error' => 'User ID not found in session.']);
+        }
         
         $ans = $request->validate([
             'name' => 'string|max:255',

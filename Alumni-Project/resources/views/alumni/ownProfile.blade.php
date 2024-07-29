@@ -195,7 +195,7 @@
                                                  Need to set
                                              @endif
                                          </li>
-                                         <li>
+                                          <li>
                                              <strong>LinkedIn Profile:</strong>
                                              @if($alumni->linkedin_profile == null)
                                                 Need to set
@@ -203,17 +203,19 @@
                                                 @php
                                                    $linkedIn = $alumni->linkedin_profile;
                                                    $isUrl = strpos($linkedIn, '.com') !== false;
+                                                   // Add https if not present
+                                                   if ($isUrl && !preg_match("/^http(s)?:\/\//", $linkedIn)) {
+                                                         $linkedIn = 'https://' . $linkedIn;
+                                                   }
                                                 @endphp
-                                       
                                                 @if($isUrl)
                                                    <a href="{{ $linkedIn }}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Click to Redirect</a>
                                                 @else
                                                    {{ $linkedIn }}
                                                 @endif
                                              @endif
-                                         </li>
-                                       
-                                         <li>
+                                       </li>
+                                       <li>
                                              <strong>GitHub Profile:</strong> 
                                              @if($alumni->github_profile == null)
                                                 Need to set
@@ -221,6 +223,10 @@
                                                 @php
                                                    $github = $alumni->github_profile;
                                                    $isUrl = strpos($github, '.com') !== false;
+                                                   // Add https if not present
+                                                   if ($isUrl && !preg_match("/^http(s)?:\/\//", $github)) {
+                                                         $github = 'https://' . $github;
+                                                   }
                                                 @endphp
                                        
                                                 @if($isUrl)
@@ -229,7 +235,7 @@
                                                    {{ $github }}
                                                 @endif
                                              @endif
-                                         </li>
+                                       </li>
                                          <li>
                                              <strong>Current City: </strong>
                                              @if($alumni->current_city != null)

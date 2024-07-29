@@ -170,6 +170,10 @@
                                                     @php
                                                         $linkedIn = $student->linkedin_profile;
                                                         $isUrl = strpos($linkedIn, '.com') !== false;
+                                                        // Add https if not present
+                                                        if ($isUrl && !preg_match("/^http(s)?:\/\//", $linkedIn)) {
+                                                            $linkedIn = 'https://' . $linkedIn;
+                                                        }
                                                     @endphp
                                             
                                                     @if($isUrl)
@@ -179,7 +183,6 @@
                                                     @endif
                                                 @endif
                                             </li>
-                                        
                                             <li>
                                                 <strong>GitHub Profile:</strong> 
                                                 @if($student->github_profile == null)
@@ -188,8 +191,11 @@
                                                     @php
                                                         $github = $student->github_profile;
                                                         $isUrl = strpos($github, '.com') !== false;
+                                                        // Add https if not present
+                                                        if ($isUrl && !preg_match("/^http(s)?:\/\//", $github)) {
+                                                            $github = 'https://' . $github;
+                                                        }
                                                     @endphp
-                                            
                                                     @if($isUrl)
                                                         <a href="{{ $github }}" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Click to Redirect</a>
                                                     @else

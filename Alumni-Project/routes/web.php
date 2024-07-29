@@ -68,7 +68,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/myprofile',[AlumniController::class,'ownProfile'])->name('alumni.ownProfile');
 
     // Update details
-    Route::get('/alumni/settings/{id}',[AlumniController::class,'settings'])->name('alumni.settings');
+    Route::get('/alumni/settings',[AlumniController::class,'settings'])->name('alumni.settings');
     Route::post('/alumni/settings/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
 
     //View everybody's details and Students profile
@@ -94,8 +94,8 @@ Route::middleware(['auth:student'])->group(function () {
     Route::get('/student/students/profile/{id}',[StudentController::class,'profile'])->name('student.profile');
 
     // Update details
-    Route::get('/student/settings/{id}',[StudentController::class,'settings'])->name('student.settings');
-    Route::post('/student/settings/update/{id}', [StudentController::class, 'update'])->name('student.update');
+    Route::get('/student/settings',[StudentController::class,'settings'])->name('student.settings');
+    Route::post('/student/settings/update', [StudentController::class, 'update'])->name('student.update');
 
     // View everybody's details and seperate profiles : alumni
     Route::get('student/alumni',[AlumniController::class,'ViewList']);
