@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\StudentLoginController;
 use App\Http\Controllers\JobOpeningController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\PostController;
 use App\Models\Alumni;
 use App\Models\JobOpening;
 use App\Models\Student;
@@ -59,6 +59,9 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::middleware(['auth:alumni'])->group(function () {
     // Index for Alumni
     Route::get('/alumni',[AlumniController::class, 'index'])->name('alumni.index');
+    // Create Post
+    Route::post('alumni/post/store', [PostController::class, 'store'])->name('posts.store');
+
 
     // View everybody's details and seperate profiles : alumni
     Route::get('/alumni/alumni',[AlumniController::class,'ViewList']);
@@ -83,7 +86,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
     // TODO alumni choosing event is not yet done
-
+    
 });
 
 Route::middleware(['auth:student'])->group(function () {

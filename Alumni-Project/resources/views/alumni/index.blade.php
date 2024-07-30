@@ -16,40 +16,29 @@
                                           <img src="images/resources/admin2.jpg" alt="">
                                        </figure>
                                        <div class="newpst-input">
-                                          <form method="post">
-                                             <textarea rows="2" placeholder="write something"></textarea>
+                                          <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                                             @csrf 
+                                             <textarea name="caption" rows="2" placeholder="Write caption"></textarea>
                                              <div class="attachments">
-                                                <ul>
-                                                   <li>
-                                                      <i class="fa fa-music"></i>
-                                                      <label class="fileContainer">
-                                                      <input type="file">
-                                                      </label>
-                                                   </li>
-                                                   <li>
-                                                      <i class="fa fa-image"></i>
-                                                      <label class="fileContainer">
-                                                      <input type="file">
-                                                      </label>
-                                                   </li>
-                                                   <li>
-                                                      <i class="fa fa-video-camera"></i>
-                                                      <label class="fileContainer">
-                                                      <input type="file">
-                                                      </label>
-                                                   </li>
-                                                   <li>
-                                                      <i class="fa fa-camera"></i>
-                                                      <label class="fileContainer">
-                                                      <input type="file">
-                                                      </label>
-                                                   </li>
-                                                   <li>
-                                                      <button type="submit">Post</button>
-                                                   </li>
-                                                </ul>
+                                                 <ul>
+                                                     <li>
+                                                         <i class="fa fa-image"></i>
+                                                         <label class="fileContainer">
+                                                             <input type="file" name="photos[]" multiple accept="image/*">
+                                                         </label>
+                                                     </li>
+                                                     <li>
+                                                         <i class="fa fa-video-camera"></i>
+                                                         <label class="fileContainer">
+                                                             <input type="file" name="videos[]" multiple accept="video/*">
+                                                         </label>
+                                                     </li>
+                                                     <li>
+                                                         <button type="submit">Post</button>
+                                                     </li>
+                                                 </ul>
                                              </div>
-                                          </form>
+                                         </form>                                         
                                        </div>
                                     </div>
                                  </div>
