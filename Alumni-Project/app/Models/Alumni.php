@@ -34,6 +34,7 @@ class Alumni extends Authenticatable
         'webinars_participation',
         'current_city',
         'current_country',
+        'profile_picture'
     ];
 
     protected $hidden = [

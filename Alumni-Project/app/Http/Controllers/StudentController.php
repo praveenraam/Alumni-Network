@@ -9,16 +9,19 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use PDO;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 
 class StudentController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('student.index');
     }
 
-    public function settings(){
+    public function settings()
+    {
 
         $userId = Session::get('user_id');
 
@@ -26,34 +29,37 @@ class StudentController extends Controller
             return redirect()->route('404')->withErrors(['error' => 'User ID not found in session.']);
         }
 
-        $student = Student::find($userId); 
-        if($student == null) return redirect()->route('404'); 
+        $student = Student::find($userId);
+        if ($student == null) return redirect()->route('404');
 
-        return view('student.settings',compact('student'));
+        return view('student.settings', compact('student'));
     }
 
-    public function profile($id){
-        $student = Student::find($id);  
-        if($student == null) return redirect()->route('404');
-        return view('student.profile',compact('student'));
+    public function profile($id)
+    {
+        $student = Student::find($id);
+        if ($student == null) return redirect()->route('404');
+        return view('student.profile', compact('student'));
     }
 
-    public function ViewList(){
+    public function ViewList()
+    {
         $students = Student::all();
-        return view('admin.student.view',compact('students'));
+        return view('admin.student.view', compact('students'));
     }
 
-    public function ownProfile(){
+    public function ownProfile()
+    {
         $userId = Session::get('user_id');
 
-        if($userId){
+        if ($userId) {
             $student = Student::find($userId);
-            if($student == null) return redirect()->route('404');
+            if ($student == null) return redirect()->route('404');
         }
-        return view('student.ownProfile',compact('student'));
+        return view('student.ownProfile', compact('student'));
     }
 
-    
+
     public function update(Request $request)
     {
         // Validate the request data
@@ -89,11 +95,23 @@ class StudentController extends Controller
         // Find the student by ID or fail if not found
         $student = Student::findOrFail($id);
 
+        if ($request->hasFile('student_profile_pic')) {
+            // Store the uploaded file
+            $filePath = $request->file('student_profile_pic')->store('std_profile_pics', 'public');
+            
+            // Optionally delete the old profile picture from storage
+            if ($student->std_profile_picture) {
+                Storage::delete('public/' . $student->std_profile_picture);
+            }
+
+            // Update the profile_picture column
+            $student->std_profile_picture = $filePath;
+        }
+        
         // Update the student record with validated data
         $student->update($res);
 
         // Redirect back to the student index or other appropriate page with a success message
         return redirect()->route('student.index')->with('success', 'Student information updated successfully.');
     }
-
 }

@@ -17,8 +17,8 @@ class Post extends Model
     protected $fillable = [
         'user_id',
         'caption',
-        'photos',
-        'videos',
+        'photo1',
+        'photo2',
     ];
 
     /**
@@ -46,16 +46,7 @@ class Post extends Model
      */
     public function getPhotosPathAttribute()
     {
-        return json_decode($this->photos, true);
+        return json_decode($this->photo, true);
     }
 
-    /**
-     * Get the path for the videos.
-     *
-     * @return string
-     */
-    public function getVideosPathAttribute()
-    {
-        return json_decode($this->videos, true);
-    }
 }

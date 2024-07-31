@@ -8,6 +8,8 @@ use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use PDO;
 
 class AlumniController extends Controller
@@ -52,7 +54,7 @@ class AlumniController extends Controller
         if (!$id) {
             return redirect()->route('404')->withErrors(['error' => 'User ID not found in session.']);
         }
-        
+
         $ans = $request->validate([
             'name' => 'string|max:255',
             'roll_no' => 'string|max:255',
@@ -76,11 +78,29 @@ class AlumniController extends Controller
             'current_city' => 'nullable|string|max:255',
             'current_country' => 'nullable|string|max:255',
         ]);
+
         $alumni = Alumni::findOrFail($id);
+
+        if ($request->hasFile('profile_pic')) {
+            // Store the uploaded file
+            $filePath = $request->file('profile_pic')->store('profile_pics', 'public');
+
+            // Optionally delete the old profile picture from storage
+            if ($alumni->profile_picture) {
+                // You may need to adjust the path based on your storage structure
+                Storage::delete('public/' . $alumni->profile_picture);
+            }
+
+            // Update the profile_picture column in the alumni table
+            $alumni->profile_picture = $filePath;
+        }
+
+        // Update other alumni information
         $alumni->update($ans);
 
         return redirect()->route('alumni.index')->with('success', 'Alumni information updated successfully.');
     }
+
 
     public function create(){
         return view('admin.alumni.create');

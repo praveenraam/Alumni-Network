@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('certifications')->nullable();
             $table->string('internships_status')->nullable();
             $table->string('internships_experience')->nullable();
+            $table->string('std_profile_picture')->nullable();
         });
     }
 

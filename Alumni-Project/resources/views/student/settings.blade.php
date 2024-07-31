@@ -13,7 +13,7 @@
                         <div class="central-meta">
                             <div class="editing-info">
                                 <h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
-                                <form method="post" action="{{route('student.update', $student->id)}}">
+                                <form method="post" action="{{route('student.update', $student->id)}}" enctype="multipart/form-data">
                                         @csrf
                                         
                                         <!-- Personal Information -->
@@ -86,6 +86,14 @@
                                         <div class="form-group">
                                             <input type="text" name="programming_languages" value="{{ $student->programming_languages }}">
                                             <label class="control-label" for="programming_languages">Programming Languages Known</label><i class="mtrl-select"></i>
+                                        </div>
+
+                                        <!-- Images -->
+
+                                        <div class="form-group">
+                                            <input type="file" name="student_profile_pic" accept="image/*">
+                                            <label class="control-label" for="profile_pic">Profile Picture</label>
+                                            <i class="mtrl-select"></i>
                                         </div>
 
                                         <!-- Additional Information -->
