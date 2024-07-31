@@ -23,21 +23,14 @@ class PostController extends Controller
         $post->caption = $request->caption;
         // dd($request);
         if ($request->hasFile('photo1')) {
-            $photo1 = [];
-            foreach ($request->file('photo1') as $photo) {
-                $photo1[] = $photo->store('photo1', 'public');
-            }
-            $post->photo1 = json_encode($photo1);
+            $photo1 = $request->file('photo1')->store('photo1', 'public');
+            $post->photo1 = $photo1;
         }
         
-
         if ($request->hasFile('photo2')) {
-            $photo2 = [];
-            foreach ($request->file('photo2') as $video) {
-                $photo2[] = $video->store('photo2');
-            }
-            $post->photo2 = json_encode($photo2);
-        }
+            $photo2 = $request->file('photo2')->store('photo2', 'public');
+            $post->photo2 = $photo2;
+        }        
 
         $post->save();
 

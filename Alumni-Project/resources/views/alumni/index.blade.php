@@ -24,13 +24,13 @@
                                                      <li>
                                                          <i class="fa fa-image"></i>
                                                          <label class="fileContainer">
-                                                             <input type="file" name="photo1[]" multiple accept="image/*">
+                                                             <input type="file" name="photo1" accept="image/*">
                                                          </label>
                                                      </li>
                                                      <li>
                                                          <i class="fa fa-image"></i>
                                                          <label class="fileContainer">
-                                                             <input type="file" name="photo2[]" multiple accept="image/*">
+                                                             <input type="file" name="photo2" accept="image/*">
                                                          </label>
                                                      </li>
                                                      <li>
