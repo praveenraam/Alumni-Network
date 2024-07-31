@@ -19,23 +19,24 @@ class PostController extends Controller
         ]);
         
         $post = new Post();
-        $post->user_id = Auth::id(); // Set the user ID from the authenticated user
+        $post->user_id = Auth::id(); 
         $post->caption = $request->caption;
-
-        if ($request->hasFile('photos')) {
-            $photos = [];
-            foreach ($request->file('photos') as $photo) {
-                $photos[] = $photo->store('photos');
+        // dd($request);
+        if ($request->hasFile('photo1')) {
+            $photo1 = [];
+            foreach ($request->file('photo1') as $photo) {
+                $photo1[] = $photo->store('photo1', 'public');
             }
-            $post->photos = json_encode($photos);
+            $post->photo1 = json_encode($photo1);
         }
+        
 
-        if ($request->hasFile('videos')) {
-            $videos = [];
-            foreach ($request->file('videos') as $video) {
-                $videos[] = $video->store('videos');
+        if ($request->hasFile('photo2')) {
+            $photo2 = [];
+            foreach ($request->file('photo2') as $video) {
+                $photo2[] = $video->store('photo2');
             }
-            $post->videos = json_encode($videos);
+            $post->photo2 = json_encode($photo2);
         }
 
         $post->save();

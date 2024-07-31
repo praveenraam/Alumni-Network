@@ -24,13 +24,13 @@
                                                      <li>
                                                          <i class="fa fa-image"></i>
                                                          <label class="fileContainer">
-                                                             <input type="file" name="photos[]" multiple accept="image/*">
+                                                             <input type="file" name="photo1[]" multiple accept="image/*">
                                                          </label>
                                                      </li>
                                                      <li>
-                                                         <i class="fa fa-video-camera"></i>
+                                                         <i class="fa fa-image"></i>
                                                          <label class="fileContainer">
-                                                             <input type="file" name="videos[]" multiple accept="video/*">
+                                                             <input type="file" name="photo2[]" multiple accept="image/*">
                                                          </label>
                                                      </li>
                                                      <li>

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('caption')->nullable();
-            $table->string('photos')->nullable(); // Store paths to photo attachments
-            $table->string('videos')->nullable(); // Store paths to video attachments
+            $table->string('photo1')->nullable(); // Store paths to photo attachments
+            $table->string('photo2')->nullable(); // Store paths to video attachments
             $table->timestamps();
 
             // Add foreign key constraint if using a users table
