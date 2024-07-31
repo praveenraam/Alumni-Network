@@ -49,4 +49,9 @@ class Post extends Model
         return json_decode($this->photo, true);
     }
 
+    public function alumni()
+    {
+        return $this->belongsTo(Alumni::class, 'user_id');
+    }
+
 }

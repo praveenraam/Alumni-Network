@@ -10,14 +10,15 @@ use Illuminate\Http\Request;
 use PDO;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Post;
 
 
 class StudentController extends Controller
 {
     public function index()
     {
-        return view('student.index');
+        $posts = Post::with('alumni')->orderBy('created_at', 'desc')->get();
+        return view('student.index', compact('posts'));
     }
 
     public function settings()

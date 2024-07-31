@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\Post;
 use App\Models\User;
 use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 use PDO;
 
 class AlumniController extends Controller
@@ -133,8 +135,10 @@ class AlumniController extends Controller
         return redirect()->route('admin.alumni.create')->with('success', 'An Alumni was created successfully.');
     }
 
-    public function index(){
-        return view('alumni.index');
+    public function index()
+    {
+        $posts = Post::with('alumni')->orderBy('created_at', 'desc')->get();
+        return view('alumni.index', compact('posts'));
     }
 
 }

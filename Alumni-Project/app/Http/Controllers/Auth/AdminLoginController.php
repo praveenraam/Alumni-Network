@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Post;
 
 class AdminLoginController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminLoginController extends Controller
 
     public function index()
     {
-        return view('admin.index'); // Ensure this view exists
+        $posts = Post::with('alumni')->orderBy('created_at', 'desc')->get();
+        return view('admin.index', compact('posts'));
     }
 }
