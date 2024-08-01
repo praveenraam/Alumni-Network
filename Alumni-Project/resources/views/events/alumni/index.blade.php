@@ -32,8 +32,10 @@
                                                 <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
                                                 
                                                 @if($event->coordinator_id == null)
+                                                   
                                                 {{-- // TODO ask surya how to get Alumni id from session --}}
-                                                   <form action="events/{{$event->id}}/coordinator/" method="post">
+                                                   <form action="{{route('event.co-ordinate')}}" method="post">
+                                                      @csrf
                                                       <button type="submit" class="add-butn border-0 p-2 rounded text-white">
                                                          Be Coordinator
                                                       </button> 

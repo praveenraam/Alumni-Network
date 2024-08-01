@@ -1,3 +1,4 @@
+@if($posts->isNotEmpty())
 @foreach($posts as $postV)
     <div class="central-meta item" style="display: inline-block;">
         
@@ -90,3 +91,8 @@
         }
     </style>
 </head>
+@else
+<p class="text-muted font-weight-light p-3 bg-light border rounded">
+    {{ $postV->caption }}
+</p>
+@endif

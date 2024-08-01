@@ -86,6 +86,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
     // TODO alumni choosing event is not yet done
+    Route::post('alumni/coordinator',[EventController::class,'setCoOrdinator'])->name('event.co-ordinate');
     
 });
 

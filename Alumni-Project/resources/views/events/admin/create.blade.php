@@ -30,12 +30,29 @@
                                             @endif
                                           </div>
                                           <form action="{{ route('events.store') }}" method="POST">
-                                                @csrf
-                                                <input type="text" name="title" placeholder="Event Title">
-                                                <textarea name="description" placeholder="Event Description"></textarea>
-                                                <input type="date" name="event_date">
-                                                <button type="submit">Create Event</button>
+                                            @csrf
+                                        
+                                            <div class="form-group">
+                                                <input type="text" name="title" >
+                                                <label class="control-label" for="title">Event Title</label>
+                                                <i class="mtrl-select"></i>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                <textarea name="description"></textarea>
+                                                <label class="control-label" for="description">Event Description</label>
+                                                <i class="mtrl-select"></i>
+                                            </div>                                            
+                                        
+                                            <div class="form-group">
+                                                <input type="date" name="event_date" />
+                                                <label class="control-label" for="event_date">Event Date</label>
+                                                <i class="mtrl-select"></i>
+                                            </div>
+                                        
+                                            <button type="submit" class="mtr-btn"><span>Create</span></button>
                                           </form>
+                                        
                                         </div>
                                       </div>
                                 </div>

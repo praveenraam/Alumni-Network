@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Alumni;
 use Carbon\Carbon; // Add this line to import Carbon
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 class EventController extends Controller
@@ -35,7 +39,7 @@ class EventController extends Controller
     public function AlumniIndex(){
         $today = Carbon::today();
         $events = Event::with('coordinator')->where('event_date', '>=', $today)->orderBy('event_date', 'asc')->get();
-        return view('events.admin.index', compact('events'));
+        return view('events.alumni.index', compact('events'));
     }
 
     public function listEventsForStudents()
@@ -50,6 +54,22 @@ class EventController extends Controller
                        ->get();
 
         return view('events.student.index', compact('events'));
+    }
+
+    public function setCoordinator(Request $req)
+    {
+        // Get the user ID from the session
+        $id = Session::get('user_id');
+
+        // Update the coordinator_id in the database
+        DB::table('events')
+            ->update(['coordinator_id' => $id]);
+
+        // Define a success message in the session
+        Session::flash('successMessage', 'Coordinator updated successfully');
+
+        // Redirect to the AlumniIndex method
+        return Redirect::action([EventController::class, 'AlumniIndex']);
     }
 
 }
