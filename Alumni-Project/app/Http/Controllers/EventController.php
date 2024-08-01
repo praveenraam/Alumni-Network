@@ -48,13 +48,15 @@ class EventController extends Controller
         $today = Carbon::today();
 
         // Retrieve events with a coordinator, remove expired ones, and order by event_date
-        $events = Event::whereNotNull('coordinator_id')
-                       ->where('event_date', '>=', $today)
-                       ->orderBy('event_date', 'asc')
-                       ->get();
+        $events = Event::with(['coordinator', 'registrations'])
+                    ->whereNotNull('coordinator_id')
+                    ->where('event_date', '>=', $today)
+                    ->orderBy('event_date', 'asc')
+                    ->get();
 
         return view('events.student.index', compact('events'));
     }
+
 
     public function setCoordinator(Request $req)
     {

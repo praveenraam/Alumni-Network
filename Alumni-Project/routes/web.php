@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\StudentLoginController;
 use App\Http\Controllers\JobOpeningController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EventStudentController;
 use App\Models\Alumni;
 use App\Models\JobOpening;
 use App\Models\Student;
@@ -116,5 +117,6 @@ Route::middleware(['auth:student'])->group(function () {
 
     // View events
     Route::get('student/events', [EventController::class, 'listEventsForStudents'])->name('student.events');
-    // TODO students registering the event is not done
+    Route::post('student/events/{eventId}/register', [EventStudentController::class, 'registerStudent'])->name('events.register');
+
 });

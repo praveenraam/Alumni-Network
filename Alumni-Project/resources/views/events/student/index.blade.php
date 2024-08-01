@@ -24,19 +24,35 @@
                                <div class="tab-pane active fade show">
                                   <ul class="nearby-contct">
                                     @foreach($events as $event)
-                                     @if($event->coordinator_id != null)
-                                     <li>
-                                        <div class="nearly-pepls">
-                                           <div class="pepl-info">
-                                                <h5 class="card-title">{{ $event->title }}</h5>
-                                                <p class="card-text">{{ $event->description }}</p>
-                                                <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
-                                                <p class="card-text"><strong>Event Co-Ordinator :</strong> {{ $event->coordinator->name }}</p>
-                                           </div>
-                                        </div>
-                                     </li>
-                                     @endif
-                                     @endforeach
+                                       <li>
+                                          <div class="nearly-pepls">
+                                                <div class="pepl-info">
+                                                   <h5 class="card-title">{{ $event->title }}</h5>
+                                                   <p class="card-text">{{ $event->description }}</p>
+                                                   <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
+                                                   <p class="card-text"><strong>Event Co-Ordinator:</strong> {{ $event->coordinator->name }}</p>
+                                                   @php
+                                                      $studentId = Session::get('user_id'); // Get the student ID from the session
+                                                      // Ensure registrations is not null and check if the student is registered
+                                                      $isRegistered = $event->registrations->contains('student_id', $studentId);
+                                                   @endphp
+                                                   @if($isRegistered)
+                                                   <p>You are already <strong> Registered </strong> for this event.</p>
+                                                   @endif
+                                                </div>
+                                          </div>
+                                          
+                                          
+                                          
+                                          @if(!$isRegistered)
+                                                <form action="{{ route('events.register', $event->id) }}" method="post">
+                                                   @csrf
+                                                   <button type="submit" class="mtr-btn"><span>Register</span></button>
+                                                </form>
+                                          @endif
+                                       </li>
+                                    @endforeach
+
                                   </ul>
                                </div>
                             </div>
