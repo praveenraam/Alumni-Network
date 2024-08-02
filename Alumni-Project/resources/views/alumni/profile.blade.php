@@ -3,54 +3,43 @@
 
 @push('bodycontent')
 <section>
-    <div class="feature-photo">
-       <figure><img src="images/resources/timeline-1.jpg" alt=""></figure>
-       <div class="add-btn">
-          <span>1205 followers</span>
-          <a href="#" title="" data-ripple="">Add Friend<span class="ripple"><span class="ink" style="height: 110px; width: 110px; background-color: rgb(217, 217, 217); top: -45.325px; left: -14.475px;"></span></span></a>
-       </div>
-       <form class="edit-phto">
-          <i class="fa fa-camera-retro"></i>
-          <label class="fileContainer">
-          Edit Cover Photo
-          <input type="file">
-          </label>
-       </form>
+   <div class="feature-photo">
+    <figure class="cover-container d-flex justify-content-center align-items-center overflow-hidden">
+          <img src="{{ asset('storage/ANP-Cover.png') }}" alt="Cover Post" class="img-fluid">
+    </figure>
        <div class="container-fluid">
-          <div class="row merged">
-             <div class="col-lg-2 col-sm-3">
-                <div class="user-avatar">
-                   <figure>
-                      <img src="images/resources/user-avatar.jpg" alt="">
-                      <form class="edit-phto">
-                         <i class="fa fa-camera-retro"></i>
-                         <label class="fileContainer">
-                         Edit Display Photo
-                         <input type="file">
-                         </label>
-                      </form>
-                   </figure>
-                </div>
-             </div>
-             <div class="col-lg-10 col-sm-9">
-                <div class="timeline-info">
-                   <ul>
-                      <li class="admin-name">
-                         <h5>  Griffith</h5>
-                         <span>department</span>
-                      </li>
-                      <li>
-                         <a class="active" href="time-line.html" title="" data-ripple="">time line</a>
-                         <a class="" href="#" title="" data-ripple="">more</a>
-                      </li>
-                   </ul>
-                </div>
-             </div>
-          </div>
+           <div class="row merged">
+               <div class="col-lg-2 col-sm-3">
+                   <div class="user-avatar">
+                      <figure class="text-center">
+                         <div class="rounded-circle overflow-hidden" style="width: 150px; height: 150px; margin: auto;">
+                           @if($alumni->profile_picture)
+                           <img src="{{ asset('storage/' . $alumni->profile_picture) }}" alt="Profile Picture" class="img-fluid">
+                           @else
+                               <img src="{{ asset('storage/default.png') }}" alt="Profile Picture" class="img-fluid">
+                           @endif
+                         </div>
+                      </figure>                            
+                   </div>
+               </div>
+               <div class="col-lg-10 col-sm-9">
+                   <div class="timeline-info">
+                       <ul>
+                           <li class="admin-name">
+                               <h5> {{$alumni->name}}</h5>
+                               <span>{{$alumni->department}}</span>
+                           </li>
+                           <li>
+                               <a class="active" href="time-line.html" title="" data-ripple="">time line</a>
+                               <a class="" href="#" title="" data-ripple="">more</a>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
        </div>
-    </div>
- </section>
-<section>
+   </div>
+</section>
     <div class="gap gray-bg">
        <div class="container">
           <div class="row">
