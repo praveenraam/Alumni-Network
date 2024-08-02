@@ -11,24 +11,38 @@
                     <ins>
                         <a href="
                             @if(Auth::guard('student')->check())
-                                student/alumni/profile/{{$postV->alumni->id}}
+                                student/alumni/profile/{{ $postV->alumni->id }}
                             @elseif(Auth::guard('alumni')->check())
-                                alumni/alumni/profile/{{$postV->alumni->id}}
+                                alumni/alumni/profile/{{ $postV->alumni->id }}
                             @elseif(Auth::guard('admin')->check())
-                                admin/alumni/profile/{{$postV->alumni->id}}
+                                admin/alumni/profile/{{ $postV->alumni->id }}
                             @endif
-                        " title="Profile">{{$postV->alumni->name}}
+                        " title="Profile">{{ $postV->alumni->name }}
                         </a>
                     </ins>
-                    <span>{{$postV->created_at}}</span>
+                    <span>{{ $postV->created_at }}</span>
                     <div class="more">
                         <div class="more-post-optns"><i class="ti-more-alt"></i>
                             <ul>
-                                <li><i class="fa fa-wpexplorer"></i>Report post</li>
+                                <li>
+                                    <i class="fa fa-wpexplorer"></i>
+                                    <form action="
+                                        @if(Auth::guard('student')->check())
+                                            student/{{ $postV->id }}/{{ session('user_id') }}
+                                        @elseif(Auth::guard('alumni')->check())
+                                            alumni/{{ $postV->id }}/{{ session('user_id') }}
+                                        @endif
+                                    " method="post" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" style="background:none;border:none;padding:0;margin:0;color:#007bff;text-decoration:underline;cursor:pointer;">
+                                            Report post
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>                
                 <div class="post-meta">
                     
                     <div class="description">
