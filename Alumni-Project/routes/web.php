@@ -51,12 +51,13 @@ Route::middleware(['auth:admin'])->group(function () {
     // View Jobs
     Route::get('admin/jobs', [JobOpeningController::class, 'viewJobs']);
 
-    // Create events
+    // Create event
     Route::get('admin/events/create', [EventController::class, 'create'])->name('events.create');
     Route::post('admin/events/store', [EventController::class, 'store'])->name('events.store');
-    // View events
+    // View events  
     Route::get('admin/events', [EventController::class, 'AdminIndex'])->name('admin.events.index');
-    // TODO Viewing the list of students registered
+    // Viewing the list of students registered
+    Route::get('/admin/events/{eventId}/registration', [EventStudentController::class, 'showRegistrations'])->name('admin.events.registered-students');
 
     // View Reports
     Route::get('admin/Reports/Post', [PostReportsController::class, 'indexForAdmin'])->name('admin.reports.post');
@@ -92,8 +93,11 @@ Route::middleware(['auth:alumni'])->group(function () {
 
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
-    // TODO alumni choosing event is not yet done
+    // alumni choosing event as co-ordinator
     Route::post('alumni/coordinator', [EventController::class, 'setCoOrdinator'])->name('event.co-ordinate');
+    // Viewing registered Students
+    Route::get('/alumni/events/{eventId}/registration', [EventStudentController::class, 'showRegistrations'])->name('alumni.events.registered-students');
+
 });
 
 Route::middleware(['auth:student'])->group(function () {

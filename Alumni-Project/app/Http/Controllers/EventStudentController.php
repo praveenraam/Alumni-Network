@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\EventStudent;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -34,10 +35,14 @@ class EventStudentController extends Controller
 
     public function showRegistrations($eventId)
     {
-        $registrations = EventStudent::where('event_id', $eventId)
-            ->with('student') // If you want to eager load student data
+        // Get the event
+        $event = Event::findOrFail($eventId);
+
+        // Get the students registered for the event
+        $registeredStudents = EventStudent::where('event_id', $eventId)
+            ->with('student') // eager load student relationship
             ->get();
 
-        return view('events.registrations', compact('registrations'));
+        return view('events.admin.register', compact('event', 'registeredStudents'));
     }
 }

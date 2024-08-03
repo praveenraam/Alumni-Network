@@ -33,15 +33,18 @@
                                                 
                                                 @if($event->coordinator_id == null)
                                                    
-                                                {{-- // TODO ask surya how to get Alumni id from session --}}
                                                    <form action="{{route('event.co-ordinate')}}" method="post">
                                                       @csrf
-                                                      <button type="submit" class="add-butn border-0 p-2 rounded text-white">
-                                                         Be Coordinator
+                                                      <button type="submit" class="mtr-btn mt-3">
+                                                         <span>Be Co-Ordinator</span>
                                                       </button> 
                                                    </form>  
                                                 @else
                                                    <p class="card-text"><strong>Event Co-Ordinator :</strong> {{ $event->coordinator->name }}</p>
+                                                
+                                                   @if($event->coordinator_id == session('user_id'))
+                                                      <button class="mtr-btn mt-3" onclick="window.location.href='/alumni/events/{{$event->id}}/registration'"><span>Registrations</span></button>
+                                                   @endif
                                                 @endif
                                            </div>
                                         </div>

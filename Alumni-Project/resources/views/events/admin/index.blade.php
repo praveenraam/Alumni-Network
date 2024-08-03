@@ -3,11 +3,6 @@
 
 @push('bodycontent')
 <section>
-
-   <style>
-      
-   </style>
-
     <div class="gap gray-bg">
        <div class="container">
           <div class="row">
@@ -24,20 +19,22 @@
                                <div class="tab-pane active fade show">
                                   <ul class="nearby-contct">
                                     @foreach($events as $event)
-                                     <li>
-                                        <div class="nearly-pepls">
-                                           <div class="pepl-info">
-                                                <h5 class="card-title">{{ $event->title }}</h5>
-                                                <p class="card-text">{{ $event->description }}</p>
-                                                <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
-                                                @if($event->coordinator_id == null)
-                                                   <p class="card-text"><strong>Event Co-Ordinator :</strong> None accepted</p>
-                                                @else
-                                                   <p class="card-text"><strong>Event Co-Ordinator :</strong> {{ $event->coordinator->name }}</p>
-                                                @endif 
-                                           </div>
-                                        </div>
-                                     </li>
+                                    <li>
+                                       <div class="nearly-pepls">
+                                          <div class="pepl-info">
+                                             <h5 class="card-title">{{ $event->title }}</h5>
+                                             <p class="card-text">{{ $event->description }}</p>
+                                             <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
+                                             @if($event->coordinator_id == null)
+                                                <p class="card-text"><strong>Event Co-Ordinator :</strong> None accepted</p>
+                                             @else
+                                                <p class="card-text"><strong>Event Co-Ordinator :</strong> {{ $event->coordinator->name }}</p>
+                                             @endif 
+                                          </div>
+                                       </div>
+                                       
+                                       <button class="mtr-btn mt-3" onclick="window.location.href='/admin/events/{{$event->id}}/registration'"><span>Registrations</span></button>
+                                    </li>
                                      @endforeach
                                   </ul>
                                </div>
