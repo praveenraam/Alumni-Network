@@ -43,6 +43,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Admin view sepatate Alumni profile
     Route::get('/admin/alumni/profile/{id}', [AlumniController::class, 'profile']);
+    // Deleting alumni User
+    Route::delete('/admin/alumni/{id}', [AlumniController::class, 'deleteAlumni'])->name('admin.alumni.delete');
+
 
     // Admin everybody's details and seperate profiles : students
     Route::get('/admin/students', [StudentController::class, 'ViewList']);

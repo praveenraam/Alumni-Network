@@ -29,6 +29,7 @@
                                                                 <th>Roll No</th>
                                                                 <th>Email</th>
                                                                 <th>Company</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -46,6 +47,13 @@
                                                                         {{$alumnus->company_name}}
                                                                         @else Not Updated
                                                                         @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        <form action="{{ route('admin.alumni.delete', $alumnus->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this alumni account?');">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        </form>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

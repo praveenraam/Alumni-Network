@@ -140,5 +140,15 @@ class AlumniController extends Controller
         $posts = Post::with('alumni')->orderBy('created_at', 'desc')->get();
         return view('alumni.index', compact('posts'));
     }
+    public function deleteAlumni($id)
+    {
+        // dd($id);
 
+        // Find the user by ID
+        $user = Alumni::findOrFail($id);
+        // Delete the user
+        $user->delete();
+
+        return redirect()->view('admin.alumni.view')->with('success', 'User account has been deleted successfully.');
+    }
 }
