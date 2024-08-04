@@ -61,6 +61,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // View Reports
     Route::get('admin/Reports/Post', [PostReportsController::class, 'indexForAdmin'])->name('admin.reports.post');
+    // Delete Action for Admin
+    Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+
 });
 
 Route::middleware(['auth:alumni'])->group(function () {

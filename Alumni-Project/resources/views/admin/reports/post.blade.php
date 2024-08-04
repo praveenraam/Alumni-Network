@@ -24,8 +24,8 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Reporter</th>
-                                                            <th>Repoted post's user</th>
-                                                            <th>Reported At</th>
+                                                            <th>Reported post's user</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -48,7 +48,13 @@
                                                                         Poster Not Found
                                                                     @endif
                                                                 </td>
-                                                                <td>{{ $postReport->created_at }}</td>
+                                                                <td>
+                                                                    <form action="{{ route('admin.posts.destroy', $postReport->post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </form>
+                                                                </td>
                                                             </tr>
                                                         @empty
                                                             <tr>

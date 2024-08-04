@@ -36,5 +36,13 @@ class PostController extends Controller
 
         return redirect()->route('alumni.index')->with('success', 'Post created successfully.');
     }
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('admin.reports.post')->with('success', 'Post deleted successfully.');
+    }
+
 }
     
