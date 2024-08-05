@@ -40,7 +40,7 @@ class GoogleService
             }
 
             $this->client->setAccessToken($token['access_token']);
-            
+
             $oauth2 = new Google_Service_Oauth2($this->client);
             return $oauth2->userinfo->get();
         }

@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\GoogleService;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -25,6 +26,7 @@ class StudentLoginController extends Controller
 
     public function handleGoogleCallback(Request $request)
     {
+
         try {
             $user = $this->google->getUser($request);
 

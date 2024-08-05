@@ -66,7 +66,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('admin/Reports/Post', [PostReportsController::class, 'indexForAdmin'])->name('admin.reports.post');
     // Delete Action for Admin
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
-
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
@@ -93,17 +92,16 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/students/profile/{id}', [StudentController::class, 'profile']);
 
     //View jobs 
-    Route::get('alumni/jobs', [JobOpeningController::class, 'viewJobs'])->name('jobOpenings.index');
-    Route::get('alumni/jobs/create', [JobOpeningController::class, 'create']);
-    Route::post('alumni/jobs/store', [JobOpeningController::class, 'store'])->name('jobOpenings.store');
+    Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobs'])->name('jobOpenings.index');
+    Route::get('/alumni/jobs/create', [JobOpeningController::class, 'create']);
 
+    
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
     // alumni choosing event as co-ordinator
     Route::post('alumni/coordinator', [EventController::class, 'setCoOrdinator'])->name('event.co-ordinate');
     // Viewing registered Students
     Route::get('/alumni/events/{eventId}/registration', [EventStudentController::class, 'showRegistrations'])->name('alumni.events.registered-students');
-
 });
 
 Route::middleware(['auth:student'])->group(function () {
