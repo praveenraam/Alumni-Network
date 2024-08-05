@@ -93,9 +93,9 @@ Route::middleware(['auth:alumni'])->group(function () {
 
     //View jobs 
     Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobs'])->name('jobOpenings.index');
-    Route::get('/alumni/jobs/create', [JobOpeningController::class, 'create']);
+    Route::get('/alumni/jobs/form', [JobOpeningController::class, 'form']);
+    Route::post('/alumni/insert', [JobOpeningController::class, 'store'])->name('jobOpenings.insert');
 
-    
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
     // alumni choosing event as co-ordinator
