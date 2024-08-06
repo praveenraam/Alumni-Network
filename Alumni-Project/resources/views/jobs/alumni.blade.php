@@ -53,7 +53,7 @@
                                                     <a href="{{ $link }}" title="" class="add-butn" data-ripple="" target="_blank">Click to apply</a>
                                                     
                                                     @if(session('user_id') === $jobOpening->posted_by)
-                                                        <form action="{{ route('jobOpenings.destroy', $jobOpening->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this job opening?');">
+                                                        <form action="{{ route('jobOpeningsAlumni.destroy', $jobOpening->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this job opening?');">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>

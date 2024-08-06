@@ -53,7 +53,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // View Jobs
     Route::get('admin/jobs', [JobOpeningController::class, 'viewJobsAdmin']);
-    Route::delete('admin/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpenings.destroy');
+    Route::delete('admin/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpeningsAdmin.destroy');
 
     // Create event
     Route::get('admin/events/create', [EventController::class, 'create'])->name('events.create');
@@ -62,6 +62,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('admin/events', [EventController::class, 'AdminIndex'])->name('admin.events.index');
     // Viewing the list of students registered
     Route::get('/admin/events/{eventId}/registration', [EventStudentController::class, 'showRegistrations'])->name('admin.events.registered-students');
+    // Deleting events
+    Route::delete('admin/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
     // View Reports
     Route::get('admin/Reports/Post', [PostReportsController::class, 'indexForAdmin'])->name('admin.reports.post');
@@ -96,7 +98,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobsAlumni'])->name('jobOpenings.index');
     Route::get('/alumni/jobs/form', [JobOpeningController::class, 'form']);
     Route::post('/alumni/insert', [JobOpeningController::class, 'store'])->name('jobOpenings.insert');
-    Route::delete('alumni/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpenings.destroy');
+    Route::delete('alumni/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpeningsAlumni.destroy');
 
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');

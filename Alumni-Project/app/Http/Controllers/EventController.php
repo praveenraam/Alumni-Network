@@ -74,4 +74,12 @@ class EventController extends Controller
         return Redirect::action([EventController::class, 'AlumniIndex']);
     }
 
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+
+        return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully.');
+    }
+
 }
