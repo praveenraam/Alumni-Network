@@ -63,8 +63,12 @@ class EventController extends Controller
         // Get the user ID from the session
         $id = Session::get('user_id');
 
-        // Update the coordinator_id in the database
+        // Get the event ID from the request
+        $eventId = $req->input('event_id');
+
+        // Update the coordinator_id for the specific event in the database
         DB::table('events')
+            ->where('id', $eventId)
             ->update(['coordinator_id' => $id]);
 
         // Define a success message in the session

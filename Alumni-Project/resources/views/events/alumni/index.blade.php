@@ -35,6 +35,7 @@
                                                    
                                                    <form action="{{route('event.co-ordinate')}}" method="post">
                                                       @csrf
+                                                      <input type="hidden" name="event_id" value="{{ $event->id }}">
                                                       <button type="submit" class="mtr-btn mt-3">
                                                          <span>Be Co-Ordinator</span>
                                                       </button> 
