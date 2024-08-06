@@ -45,9 +45,33 @@ class JobOpeningController extends Controller
         $jobOpenings = JobOpening::with('alumni')->where('application_deadline', '>=', now())->orderBy('application_deadline', 'asc')->get();
         return view('jobs.index', compact('jobOpenings'));
     }
+    public function viewJobsAdmin()
+    {
+        $jobOpenings = JobOpening::with('alumni')->where('application_deadline', '>=', now())->orderBy('application_deadline', 'asc')->get();
+        return view('jobs.admin', compact('jobOpenings'));
+    }
+    public function viewJobsAlumni()
+    {
+        $jobOpenings = JobOpening::with('alumni')->where('application_deadline', '>=', now())->orderBy('application_deadline', 'asc')->get();
+        return view('jobs.alumni', compact('jobOpenings'));
+    }
+
     public function form()
     {
         return view('jobs.form');
+    }
+
+    public function destroy($id)
+    {
+        $jobOpening = JobOpening::find($id);
+
+        if (!$jobOpening) {
+            return redirect()->back()->with('error', 'Job opening not found.');
+        }
+
+        $jobOpening->delete();
+
+        return redirect()->back()->with('success', 'Job opening deleted successfully.');
     }
 
 }

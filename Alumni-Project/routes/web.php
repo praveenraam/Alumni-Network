@@ -52,7 +52,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/students/profile/{id}', [StudentController::class, 'profile']);
 
     // View Jobs
-    Route::get('admin/jobs', [JobOpeningController::class, 'viewJobs']);
+    Route::get('admin/jobs', [JobOpeningController::class, 'viewJobsAdmin']);
+    Route::delete('admin/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpenings.destroy');
 
     // Create event
     Route::get('admin/events/create', [EventController::class, 'create'])->name('events.create');
@@ -92,9 +93,10 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('/alumni/students/profile/{id}', [StudentController::class, 'profile']);
 
     //View jobs 
-    Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobs'])->name('jobOpenings.index');
+    Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobsAlumni'])->name('jobOpenings.index');
     Route::get('/alumni/jobs/form', [JobOpeningController::class, 'form']);
     Route::post('/alumni/insert', [JobOpeningController::class, 'store'])->name('jobOpenings.insert');
+    Route::delete('alumni/job/{id}', [JobOpeningController::class, 'destroy'])->name('jobOpenings.destroy');
 
     // View Events
     Route::get('alumni/events', [EventController::class, 'AlumniIndex'])->name('events.index');
