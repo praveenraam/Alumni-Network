@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\AlumniLoginController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\StudentLoginController;
@@ -107,6 +108,10 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::post('alumni/coordinator', [EventController::class, 'setCoOrdinator'])->name('event.co-ordinate');
     // Viewing registered Students
     Route::get('/alumni/events/{eventId}/registration', [EventStudentController::class, 'showRegistrations'])->name('alumni.events.registered-students');
+
+    // Tasks for students
+    Route::get('alumni/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('alumni/tasks', [TaskController::class, 'store'])->name('tasks.store');
 });
 
 Route::middleware(['auth:student'])->group(function () {

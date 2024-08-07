@@ -57,4 +57,9 @@ class Alumni extends Authenticatable
         return $this->hasMany(Mentorship::class, 'mentor_id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'alumni_id');
+    }
 }
+
