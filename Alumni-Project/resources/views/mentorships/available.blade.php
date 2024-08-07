@@ -17,7 +17,7 @@
                                     <div class="friend-info">
                                         <div class="friend-name">
                                             <ins><a href="#" title="">Available Mentors</a></ins>
-                                            <span>Here is the list of mentors available for guidance</span>
+                                            <span>Select a mentor from the list below</span>
                                         </div>
                                         <div class="post-meta">
                                             <div class="description">
@@ -38,15 +38,18 @@
                                                                 <tr>
                                                                     <td><a href="alumni/profile/{{$mentor->id}}" rel="noopener noreferrer" style="text-decoration: underline;">{{ $mentor->name }}</a></td>
                                                                     <td>{{ $mentor->batch }}</td>
-                                                                    <td>@if($mentor->email != null)
-                                                                        {{ $mentor->email }}
-                                                                        @else Not Updated
-                                                                        @endif
-                                                                    </td>
+                                                                    <td>{{ $mentor->email ?? 'Not Updated' }}</td>
                                                                     <td>
-                                                                        {{-- <form action="{{ route('mentorship.create', $mentor->id) }}" method="POST"> --}}
-                                                                            @csrf
-                                                                            <button type="submit" class="mtr-btn"><span>Make as Mentor</span></button>                                                                        {{-- </form> --}}
+                                                                        @if($currentMentorship && $currentMentorship->mentor_id == $mentor->id)
+                                                                            <button type="button" class="btn btn-secondary" disabled>Your Mentor</button>
+                                                                        @else
+                                                                            <form action="{{ route('mentorship.assign') }}" method="POST">
+                                                                                @csrf
+                                                                                <input type="hidden" name="mentor_id" value="{{ $mentor->id }}">
+                                                                                <input type="hidden" name="student_id" value="{{ $studentId }}">
+                                                                                <button type="submit" class="mtr-btn"><span>Make as Mentor</span></button>
+                                                                            </form>
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

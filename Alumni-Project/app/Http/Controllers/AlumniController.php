@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use App\Models\Post;
+use App\Models\Mentorship;
 use App\Models\User;
 use Google\Service\Adsense\Alert;
 use Illuminate\Support\Facades\Hash;
@@ -154,10 +155,10 @@ class AlumniController extends Controller
 
     public function availableMentors()
     {
-        // Fetch alumni with mentorship_availability set to 1
         $availableMentors = Alumni::where('mentorship_availability', 1)->get();
+        $studentId = Session::get('user_id'); // Get the student ID from the session
+        $currentMentorship = Mentorship::where('student_id', $studentId)->first();
 
-        // Return view with the list of available mentors
-        return view('mentorships.available', compact('availableMentors'));
+        return view('mentorships.available', compact('availableMentors', 'studentId', 'currentMentorship'));
     }
 }

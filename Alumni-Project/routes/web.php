@@ -12,6 +12,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventStudentController;
 use App\Http\Controllers\PostReportsController;
+use App\Http\Controllers\MentorshipController;
 use App\Models\Alumni;
 use App\Models\JobOpening;
 use App\Models\PostReports;
@@ -140,5 +141,6 @@ Route::middleware(['auth:student'])->group(function () {
 
     // Mentor Availability
     Route::get('student/availablementors', [AlumniController::class, 'availableMentors']);
+    Route::post('/assign-mentor', [MentorshipController::class, 'assign'])->name('mentorship.assign');
 
 });
