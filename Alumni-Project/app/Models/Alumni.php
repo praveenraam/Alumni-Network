@@ -46,4 +46,15 @@ class Alumni extends Authenticatable
         return $this->hasMany(Event::class, 'coordinator_id');
     }
 
+    public function mentorships()
+    {
+        return $this->hasMany(Mentorship::class, 'mentor_id');
+    }
+
+    // If Alumni is a mentor, they can have multiple mentees
+    public function mentees()
+    {
+        return $this->hasMany(Mentorship::class, 'mentor_id');
+    }
+
 }

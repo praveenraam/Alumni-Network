@@ -151,4 +151,13 @@ class AlumniController extends Controller
 
         return redirect()->view('admin.alumni.view')->with('success', 'User account has been deleted successfully.');
     }
+
+    public function availableMentors()
+    {
+        // Fetch alumni with mentorship_availability set to 1
+        $availableMentors = Alumni::where('mentorship_availability', 1)->get();
+
+        // Return view with the list of available mentors
+        return view('mentorships.available', compact('availableMentors'));
+    }
 }

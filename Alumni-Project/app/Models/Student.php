@@ -32,4 +32,9 @@ class Student extends Authenticatable
         'internships_status',
         'internships_experience',
     ];
+
+    public function mentorships()
+    {
+        return $this->hasMany(Mentorship::class, 'student_id');
+    }
 }

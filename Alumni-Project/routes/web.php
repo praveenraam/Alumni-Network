@@ -137,4 +137,8 @@ Route::middleware(['auth:student'])->group(function () {
     // View events
     Route::get('student/events', [EventController::class, 'listEventsForStudents'])->name('student.events');
     Route::post('student/events/{eventId}/register', [EventStudentController::class, 'registerStudent'])->name('events.register');
+
+    // Mentor Availability
+    Route::get('student/availablementors', [AlumniController::class, 'availableMentors']);
+
 });
