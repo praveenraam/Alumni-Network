@@ -112,6 +112,8 @@ Route::middleware(['auth:alumni'])->group(function () {
     // Tasks for students
     Route::get('alumni/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
     Route::post('alumni/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::get('alumni/tasks', [TaskController::class, 'index'])->name('tasks.index');
+
 });
 
 Route::middleware(['auth:student'])->group(function () {
@@ -145,7 +147,9 @@ Route::middleware(['auth:student'])->group(function () {
     Route::post('student/events/{eventId}/register', [EventStudentController::class, 'registerStudent'])->name('events.register');
 
     // Mentor Availability
-    Route::get('student/availablementors', [AlumniController::class, 'availableMentors']);
-    Route::post('/assign-mentor', [MentorshipController::class, 'assign'])->name('mentorship.assign');
+    Route::get('student/availablementors', [AlumniController::class, 'availableMentors'])->name('available-mentors');
+    Route::post('student/assign-mentor', [MentorshipController::class, 'assign'])->name('mentorship.assign');
+    // View Tasks
+    Route::get('student/student-tasks', [TaskController::class, 'showStudentTasks'])->name('student.tasks');
 
 });

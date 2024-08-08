@@ -17,6 +17,6 @@ class MentorshipController extends Controller
             ['mentor_id' => $mentorId]
         );
 
-        return redirect()->back()->with('success', 'Mentor assigned successfully.');
+        return redirect()->route('student.tasks')->with('success', 'Mentor assigned successfully.');
     }
 }

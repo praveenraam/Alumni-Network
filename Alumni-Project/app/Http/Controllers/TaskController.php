@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Mentorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,4 +42,32 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.create')->with('success', 'Task created successfully!');
     }
+
+    public function showStudentTasks()
+    {
+        $studentId = session('user_id');
+        $mentorship = Mentorship::where('student_id', $studentId)->first();
+
+        if (!$mentorship || !$mentorship->mentor_id) {
+            return redirect()->route('available-mentors');
+        }
+
+        // Order tasks by the latest created
+        $tasks = Task::where('alumni_id', $mentorship->mentor_id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return view('tasks.view', compact('tasks'));
+    }
+
+    public function index() {
+        // Fetch tasks created by the authenticated alumni
+        $mentorId = auth()->user()->id; // Assuming the user is authenticated and is an alumni
+        $tasks = Task::where('alumni_id', $mentorId)
+                     ->orderBy('created_at', 'desc')
+                     ->get();
+    
+        return view('tasks.index', compact('tasks'));
+    }
+    
 }
