@@ -21,6 +21,10 @@ class AlumniController extends Controller
         $alumni = Alumni::all();
         return view('admin.alumni.view',compact('alumni'));
     }
+    public function ViewListAlumni(){
+        $alumni = Alumni::all();
+        return view('alumni.viewList',compact('alumni'));
+    }
 
     public function profile($id){
         $alumni = Alumni::find($id);  

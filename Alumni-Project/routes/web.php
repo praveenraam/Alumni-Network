@@ -88,7 +88,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::post('alumni/{postID}/{alumniID}', [PostReportsController::class, 'reportByAlumni'])->name('post_reports.reportByAlumni');
 
     // View everybody's details and seperate profiles : alumni
-    Route::get('/alumni/alumni', [AlumniController::class, 'ViewList']);
+    Route::get('/alumni/alumni', [AlumniController::class, 'ViewListAlumni']);
     Route::get('/alumni/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('alumni.profile');
 
     //View own profile
