@@ -5,8 +5,8 @@
         <div class="user-post">
             <div class="friend-info">
                 <figure>
-                    <img src="{{ asset('storage/' . $postV->alumni->profile_picture) }}" alt="" style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover;">
-                </figure>                
+                    <img src="{{ asset('storage/' . ($postV->alumni->profile_picture ?? 'profile_pics/default.png')) }}" alt="" style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover;">
+                </figure>                              
                 <div class="friend-name">
                     <ins>
                         <a href="

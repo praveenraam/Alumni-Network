@@ -40,7 +40,7 @@ class TaskController extends Controller
             'alumni_id' => Auth::id(), // Assuming the alumnus is authenticated
         ]);
 
-        return redirect()->route('tasks.create')->with('success', 'Task created successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
 
     public function showStudentTasks()
@@ -77,5 +77,13 @@ class TaskController extends Controller
                     ->get();
 
         return view('tasks.admin', compact('tasks'));
+    }
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->back()->with('success', 'Task deleted successfully');
     }
 }

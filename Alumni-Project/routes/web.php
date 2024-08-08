@@ -74,6 +74,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // View tasks
     Route::get('/admin/tasks', [TaskController::class, 'showAdminTasks'])->name('tasks.admin');
+    //Delete tasks
+    Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
 });
 
@@ -117,6 +119,8 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('alumni/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
     Route::post('alumni/tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::get('alumni/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    // Delete Task
+    Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
 });
 

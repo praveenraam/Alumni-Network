@@ -32,11 +32,11 @@
                                                                     <strong>Assigned Date:</strong> 
                                                                     {{ \Carbon\Carbon::parse($task->assigned_date)->format('d M Y') }}
                                                                 </p>
-                                                                {{-- <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this task?');"> --}}
+                                                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this task?');">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                                                {{-- </form> --}}
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </li>
