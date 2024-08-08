@@ -20,4 +20,8 @@ class Task extends Model
     {
         return $this->belongsTo(Alumni::class, 'alumni_id');
     }
+    public function alumni()
+    {
+        return $this->belongsTo(Alumni::class, 'alumni_id');
+    }
 }

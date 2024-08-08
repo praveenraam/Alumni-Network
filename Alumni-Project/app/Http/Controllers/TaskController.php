@@ -70,4 +70,12 @@ class TaskController extends Controller
         return view('tasks.index', compact('tasks'));
     }
     
+    public function showAdminTasks()
+    {
+        $tasks = Task::with('alumni') // Eager load the alumni relationship
+                    ->orderBy('created_at', 'desc') // Order tasks by latest created
+                    ->get();
+
+        return view('tasks.admin', compact('tasks'));
+    }
 }
