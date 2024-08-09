@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 
@@ -45,6 +46,30 @@ class AlumniLoginController extends Controller
     public function index()
     {
         return view('index'); // Ensure this view exists
+    }
+
+    public function showChangePasswordForm()
+    {
+        return view('alumni.changePassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        $alumni = Auth::guard('alumni')->user();
+
+        if (!Hash::check($request->current_password, $alumni->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect']);
+        }
+
+        $alumni->password = Hash::make($request->new_password);
+        $alumni->save();
+
+        return redirect()->route('alumni.change-password.form')->with('status', 'Password changed successfully!');
     }
 
 }

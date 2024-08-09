@@ -123,6 +123,9 @@ Route::middleware(['auth:alumni'])->group(function () {
     // Delete Task
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
+    // Change password
+    Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');
+    Route::post('/alumni/change-password', [AlumniLoginController::class,'updatePassword'])->name('alumni.change-password.update');
 });
 
 Route::middleware(['auth:student'])->group(function () {
