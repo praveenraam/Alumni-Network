@@ -13,6 +13,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventStudentController;
 use App\Http\Controllers\PostReportsController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MentorshipController;
 use App\Models\Alumni;
 use App\Models\JobOpening;
@@ -161,3 +162,6 @@ Route::middleware(['auth:student'])->group(function () {
     Route::get('student/student-tasks', [TaskController::class, 'showStudentTasks'])->name('student.tasks');
 
 });
+
+// Logout route
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
