@@ -30,8 +30,9 @@ class ForgotPasswordController extends Controller
     public function index()
     {
         // Retrieve all unresolved forgot-password requests
-        $requests = ForgotPasswordRequest::where('is_resolved', 0)->get();
-
+        $requests = ForgotPasswordRequest::where('is_resolved', 0)
+                    ->with('alumni') // Assuming you have a relationship defined
+                    ->get();
         return view('admin.alumni.resetPass', compact('requests'));
     }
 

@@ -50,7 +50,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
 
     // Admin view sepatate Alumni profile
-    Route::get('/admin/alumni/profile/{id}', [AlumniController::class, 'profile']);
+    Route::get('/admin/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('admin.alumni.profile');
     // Deleting alumni User
     Route::delete('/admin/alumni/{id}', [AlumniController::class, 'deleteAlumni'])->name('admin.alumni.delete');
 

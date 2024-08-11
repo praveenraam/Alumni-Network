@@ -61,5 +61,10 @@ class Alumni extends Authenticatable
     {
         return $this->hasMany(Task::class, 'alumni_id');
     }
+
+    public function forgotPasswordRequests()
+    {
+        return $this->hasMany(ForgotPasswordRequest::class, 'roll_no', 'roll_number');
+    }
 }
 

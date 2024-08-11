@@ -37,7 +37,12 @@
                                                         <tbody>
                                                             @foreach ($requests as $request)
                                                                 <tr>
-                                                                    <td>{{ $request->name }}</td>
+                                                                    <td>
+                                                                        <a href="{{ route('admin.alumni.profile', ['id' => $request->alumni->id]) }}">
+                                                                            {{ $request->alumni->name }}
+                                                                        </a>
+                                                                    </td>
+                                                                                                                                      
                                                                     <td>{{ $request->roll_number }}</td>
                                                                     <td>{{ $request->created_at->format('d M Y') }}</td>
                                                                     <td>
