@@ -12,6 +12,7 @@ use App\Http\Controllers\JobOpeningController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventStudentController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PostReportsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MentorshipController;
@@ -27,6 +28,9 @@ Route::post('/admin/login', [AdminLoginController::class, 'login']);
 Route::get('/login', [AlumniLoginController::class, 'showLoginForm'])->name('alumni.login');
 Route::post('/alumni/login', [AlumniLoginController::class, 'login']);
 Route::post('/alumni/logout', [AlumniLoginController::class, 'logout'])->name('alumni.logout');
+Route::get('/forgot-password',[ForgotPasswordController::class,'create'])->name('forgotpassword.page');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot-password.store');
+
 
 Route::get('/auth/google', [StudentLoginController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [StudentLoginController::class, 'handleGoogleCallback']);
