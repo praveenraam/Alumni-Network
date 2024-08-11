@@ -17,6 +17,7 @@ use App\Http\Controllers\PostReportsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MentorshipController;
 use App\Models\Alumni;
+use App\Models\ForgotPasswordRequest;
 use App\Models\JobOpening;
 use App\Models\PostReports;
 use App\Models\Student;
@@ -82,6 +83,10 @@ Route::middleware(['auth:admin'])->group(function () {
     //Delete tasks
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
+    // View Password reset requests
+    Route::get('/admin/forgot-password-requests', [ForgotPasswordController::class, 'index'])->name('admin.forgot-password-requests');
+    Route::patch('/admin/change-password/{roll_number}', [ForgotPasswordController::class, 'changePassword'])->name('admin.change-password');
+    Route::patch('/admin/ignore-request/{id}',[ForgotPasswordController::class,'ignoreRequest'])->name('admin.ignore-request');
 });
 
 Route::middleware(['auth:alumni'])->group(function () {
