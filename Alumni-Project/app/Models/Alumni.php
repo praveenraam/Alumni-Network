@@ -66,5 +66,9 @@ class Alumni extends Authenticatable
     {
         return $this->hasMany(ForgotPasswordRequest::class, 'roll_no', 'roll_number');
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
 }
 

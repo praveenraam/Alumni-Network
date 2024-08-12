@@ -36,7 +36,7 @@
                                                             @foreach($alumni as $alumnus)
                                                                 <tr>
                                                                     <td>{{ $alumnus->batch }}</td>
-                                                                    <td><a href="alumni/profile/{{$alumnus->id}}" rel="noopener noreferrer"style="text-decoration: underline;">{{$alumnus->name}}</a></td>
+                                                                    <td><a href="../alumni/profile/{{$alumnus->id}}" rel="noopener noreferrer"style="text-decoration: underline;">{{$alumnus->name}}</a></td>
                                                                     <td>{{ $alumnus->roll_no }}</td>
                                                                     <td>@if($alumnus->email != null)
                                                                         {{$alumnus->email}}

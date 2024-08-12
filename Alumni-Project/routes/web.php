@@ -51,6 +51,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Admin view sepatate Alumni profile
     Route::get('/admin/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('admin.alumni.profile');
+    // View Posts
+    Route::get('/admin/alumni/profile/post/{id}', [PostController::class, 'showProfile'])->name('alumni.profile');
+
     // Deleting alumni User
     Route::delete('/admin/alumni/{id}', [AlumniController::class, 'deleteAlumni'])->name('admin.alumni.delete');
 
@@ -100,6 +103,8 @@ Route::middleware(['auth:alumni'])->group(function () {
     // View everybody's details and seperate profiles : alumni
     Route::get('/alumni/alumni', [AlumniController::class, 'ViewListAlumni']);
     Route::get('/alumni/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('alumni.profile');
+    //View Post 
+    Route::get('/alumni/alumni/profile/post/{id}', [PostController::class, 'showProfile'])->name('alumni.profile');
 
     //View own profile
     Route::get('/alumni/myprofile', [AlumniController::class, 'ownProfile'])->name('alumni.ownProfile');
@@ -151,8 +156,10 @@ Route::middleware(['auth:student'])->group(function () {
     Route::post('/student/settings/update', [StudentController::class, 'update'])->name('student.update');
 
     // View everybody's details and seperate profiles : alumni
-    Route::get('student/alumni', [AlumniController::class, 'ViewList']);
+    Route::get('student/alumni', [AlumniController::class, 'ViewListStudent']);
     Route::get('/student/alumni/profile/{id}', [AlumniController::class, 'profile']);
+    // View Post
+    Route::get('/student/alumni/profile/post/{id}', [PostController::class, 'showProfile'])->name('alumni.profile');
 
     // View Student profile
     Route::get('/student/students/profile/{id}', [StudentController::class, 'profile']);

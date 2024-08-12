@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumni;
 use App\Models\Post;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -42,6 +43,13 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.reports.post')->with('success', 'Post deleted successfully.');
+    }
+    public function showProfile($id)
+    {
+        $alumni = Alumni::findOrFail($id);
+        $posts = $alumni->posts()->orderBy('created_at', 'desc')->get();
+
+        return view('alumni.viewPost', compact('alumni', 'posts'));
     }
 
 }

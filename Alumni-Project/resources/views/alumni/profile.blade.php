@@ -30,9 +30,9 @@
                                <span>{{$alumni->department}}</span>
                            </li>
                            <li>
-                               <a class="active" href="time-line.html" title="" data-ripple="">time line</a>
-                               <a class="" href="#" title="" data-ripple="">more</a>
-                           </li>
+                               <a class="active" title="" data-ripple="">Details</a>
+                               <a class="" href="post/{{ $alumni->id}} " title="" data-ripple="">Posts</a>
+                              </li>
                        </ul>
                    </div>
                </div>
