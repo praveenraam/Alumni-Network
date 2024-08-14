@@ -70,5 +70,9 @@ class Alumni extends Authenticatable
     {
         return $this->hasMany(Post::class, 'user_id');
     }
+    public function removeStudentsFromMentorship()
+    {
+        $this->mentorships()->update(['mentor_id' => null]);
+    }
 }
 

@@ -109,6 +109,10 @@ class AlumniController extends Controller
         // Update other alumni information
         $alumni->update($ans);
 
+        if ($request->input('mentorship_availability') == 0) {
+            $alumni->removeStudentsFromMentorship();
+        }
+
         return redirect()->route('alumni.index')->with('success', 'Alumni information updated successfully.');
     }
 
