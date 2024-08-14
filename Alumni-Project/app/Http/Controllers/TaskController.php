@@ -49,7 +49,7 @@ class TaskController extends Controller
         $mentorship = Mentorship::where('student_id', $studentId)->first();
 
         if (!$mentorship || !$mentorship->mentor_id) {
-            return redirect()->route('available-mentors');
+            return redirect()->route('available-mentors')->with('message', 'Please select a mentor to view tasks.');
         }
 
         // Order tasks by the latest created

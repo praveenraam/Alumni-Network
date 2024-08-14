@@ -19,6 +19,32 @@
                                             <ins><a href="#" title="">Available Mentors</a></ins>
                                             <span>Select a mentor from the list below</span>
                                         </div>
+                                        
+                                        <!-- Display error messages -->
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        
+                                        <!-- Display session messages -->
+                                        @if (session('error'))
+                                            <br><br>
+                                            <div class="alert alert-danger">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+                                        
+                                        @if (session('message'))
+                                            <div class="alert alert-success">
+                                                {{ session('message') }}
+                                            </div>
+                                        @endif
+                        
                                         <div class="post-meta">
                                             <div class="description">
                                                 @if($availableMentors->isEmpty())
@@ -62,6 +88,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

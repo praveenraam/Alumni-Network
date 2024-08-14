@@ -84,7 +84,7 @@
                 
             </div>
             @endif
-            <a href="#" title="" class="forgot-pwd">Forgot Password?</a>
+            <a href="/forgot-password" title="" class="forgot-pwd">Forgot Password?</a>
             <div class="submit-btns centre">
               <button class="mtr-btn signin" type="submit">
                 <span>Login</span>

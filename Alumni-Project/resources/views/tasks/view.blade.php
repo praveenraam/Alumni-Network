@@ -19,12 +19,14 @@
                             <div class="central-meta">
                                 <div class="frnds">
                                     <ul class="nav nav-tabs">
-                                        <li class="nav-item"><a class="active" href="" data-toggle="tab">Your Tasks</a></li>
+                                        <li class="nav-item"><a class="active" href="#" data-toggle="tab">Your Tasks</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active fade show">
                                             <ul class="nearby-contct">
-                                                @if ($tasks->isEmpty())
+                                                @if (session('message'))
+                                                    <p>{{ session('message') }}</p>
+                                                @elseif ($tasks->isEmpty())
                                                     <p>No tasks available.</p>
                                                 @else
                                                     @foreach($tasks as $task)
@@ -42,7 +44,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
