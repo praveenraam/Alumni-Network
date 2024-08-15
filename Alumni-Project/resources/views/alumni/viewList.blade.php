@@ -18,6 +18,15 @@
                                             <div class="friend-name">
                                                 <ins><a href="#" title="">Alumni List</a></ins>
                                                 <span>Here is the list of all alumnis</span>
+
+                                                <form action="{{ route('alumni.alumni.search') }}" method="GET">
+                                                    <div class="form-group">
+                                                        <input type="text" name="query" required="required" placeholder="Search Alumni by Name" >
+                                                        <i class="mtrl-select"></i>
+                                                    </div>
+                                                    <button type="submit" class="mtr-btn"><span>Search</span></button>
+                                                </form>
+
                                             </div>
                                             <div class="post-meta">
                                                 <div class="description">

@@ -48,6 +48,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/alumni', [AlumniController::class, 'ViewList'])->name('admin.alumni.index');
     Route::get('/admin/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
     Route::post('/admin/alumni/store', [AlumniController::class, 'store'])->name('admin.alumni.store');
+    // Search
+    Route::get('admin/alumni/search', [AlumniController::class, 'Adminsearch'])->name('admin.alumni.search');
+
 
     // Admin view sepatate Alumni profile
     Route::get('/admin/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('admin.alumni.profile');
@@ -103,6 +106,10 @@ Route::middleware(['auth:alumni'])->group(function () {
     // View everybody's details and seperate profiles : alumni
     Route::get('/alumni/alumni', [AlumniController::class, 'ViewListAlumni']);
     Route::get('/alumni/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('alumni.profile');
+    // Search Alumni
+    Route::get('alumni/alumni/search', [AlumniController::class, 'AlumniSearch'])->name('alumni.alumni.search');
+
+
     //View Post 
     Route::get('/alumni/alumni/profile/post/{id}', [PostController::class, 'showProfile'])->name('alumni.profile');
 
@@ -157,7 +164,9 @@ Route::middleware(['auth:student'])->group(function () {
 
     // View everybody's details and seperate profiles : alumni
     Route::get('student/alumni', [AlumniController::class, 'ViewListStudent']);
-    Route::get('/student/alumni/profile/{id}', [AlumniController::class, 'profile']);
+    Route::get('/student/alumni/profile/{id}', [AlumniController::class, 'profile'])->name('student.alumni.profile');
+    Route::get('student/alumni/search', [AlumniController::class, 'StudentSearch'])->name('student.alumni.search');
+
     // View Post
     Route::get('/student/alumni/profile/post/{id}', [PostController::class, 'showProfile'])->name('alumni.profile');
 

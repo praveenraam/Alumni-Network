@@ -18,6 +18,15 @@
                                             <div class="friend-name">
                                                 <ins><a href="#" title="">Alumni List</a></ins>
                                                 <span>Here is the list of all alumnis</span>
+
+                                                <form action="{{ route('student.alumni.search') }}" method="GET">
+                                                    <div class="form-group">
+                                                        <input type="text" name="query" required="required" placeholder="Search Alumni by Name" >
+                                                        <i class="mtrl-select"></i>
+                                                    </div>
+                                                    <button type="submit" class="mtr-btn"><span>Search</span></button>
+                                                </form>
+
                                             </div>
                                             <div class="post-meta">
                                                 <div class="description">
@@ -35,7 +44,11 @@
                                                             @foreach($alumni as $alumnus)
                                                                 <tr>
                                                                     <td>{{ $alumnus->batch }}</td>
-                                                                    <td><a href="alumni/profile/{{$alumnus->id}}" rel="noopener noreferrer"style="text-decoration: underline;">{{$alumnus->name}}</a></td>
+                                                                    <td>
+                                                                        <a href="{{ route('student.alumni.profile', ['id' => $alumnus->id]) }}" rel="noopener noreferrer" style="text-decoration: underline;">
+                                                                            {{ $alumnus->name }}
+                                                                        </a>
+                                                                    </td>
                                                                     <td>{{ $alumnus->roll_no }}</td>
                                                                     <td>@if($alumnus->email != null)
                                                                         {{$alumnus->email}}

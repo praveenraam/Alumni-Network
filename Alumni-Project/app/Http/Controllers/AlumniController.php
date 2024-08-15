@@ -173,4 +173,41 @@ class AlumniController extends Controller
 
         return view('mentorships.available', compact('availableMentors', 'studentId', 'currentMentorship'));
     }
+
+    public function Adminsearch(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search in Alumni table
+        $alumni = Alumni::where('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->orWhere('roll_no', 'LIKE', "%$query%")
+            ->get();
+
+        return view('admin.alumni.view', compact('alumni', 'query'));
+    }
+    public function AlumniSearch(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search in Alumni table
+        $alumni = Alumni::where('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->orWhere('roll_no', 'LIKE', "%$query%")
+            ->get();
+
+        return view('alumni.viewList', compact('alumni', 'query'));
+    }
+    public function StudentSearch(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search in Alumni table
+        $alumni = Alumni::where('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->orWhere('roll_no', 'LIKE', "%$query%")
+            ->get();
+
+        return view('student.viewAlumniList', compact('alumni', 'query'));
+    }
 }
