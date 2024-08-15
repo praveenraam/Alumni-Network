@@ -63,7 +63,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Admin everybody's details and seperate profiles : students
     Route::get('/admin/students', [StudentController::class, 'ViewList']);
-    Route::get('/admin/students/profile/{id}', [StudentController::class, 'profile']);
+    Route::get('/admin/students/profile/{id}', [StudentController::class, 'profile'])->name('admin.students.profile');;
+    // Search Student
+    Route::get('admin/student/search', [StudentController::class, 'AdminSearch'])->name('admin.student.search');
 
     // View Jobs
     Route::get('admin/jobs', [JobOpeningController::class, 'viewJobsAdmin']);
@@ -122,7 +124,9 @@ Route::middleware(['auth:alumni'])->group(function () {
 
     //View everybody's details and Students profile
     Route::get('/alumni/students', [StudentController::class, 'ViewList']);
-    Route::get('/alumni/students/profile/{id}', [StudentController::class, 'profile']);
+    Route::get('/alumni/students/profile/{id}', [StudentController::class, 'profile'])->name('alumni.students.profile');
+    // Search Student in the List
+    Route::get('alumni/student/search', [StudentController::class, 'AlumniSearch'])->name('alumni.student.search');
 
     //View jobs 
     Route::get('/alumni/jobs', [JobOpeningController::class, 'viewJobsAlumni'])->name('jobOpenings.index');

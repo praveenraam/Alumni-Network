@@ -115,4 +115,28 @@ class StudentController extends Controller
         // Redirect back to the student index or other appropriate page with a success message
         return redirect()->route('student.index')->with('success', 'Student information updated successfully.');
     }
+    public function AdminSearch(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search in Student table
+        $students = Student::where('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->orWhere('roll_number', 'LIKE', "%$query%")
+            ->get();
+
+        return view('admin.student.view', compact('students', 'query'));
+    }
+    public function AlumniSearch(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Search in Student table
+        $students = Student::where('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->orWhere('roll_number', 'LIKE', "%$query%")
+            ->get();
+
+        return view('admin.student.view', compact('students', 'query'));
+    }
 }
