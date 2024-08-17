@@ -39,6 +39,19 @@ Route::get('/auth/google/callback', [StudentLoginController::class, 'handleGoogl
 Route::get('/404', function () {
     return view('404');
 })->name('404');
+Route::get('/403', function () {
+    return response()->view('errors.403', [], 403);
+})->name('403');
+Route::get('/500', function () {
+    return response()->view('errors.500', [], );
+})->name('403');
+Route::get('/503', function () {
+    return response()->view('errors.503', [], 403);
+})->name('503');
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
 
 Route::middleware(['auth:admin'])->group(function () {
     //Index for Admin
