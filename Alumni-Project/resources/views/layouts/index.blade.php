@@ -92,16 +92,14 @@
 
 
     <style>
-        /* Custom style to set fixed width and height for carousel images */
         .carousel-item img {
             width: 100%;
-            height: 400px; /* Set your desired height */
-            object-fit: cover; /* Ensure the image covers the entire container */
+            height: 400px; 
+            object-fit: cover; 
         }
-        /* Container for fixed width */
         .carousel-container {
-            max-width: 600px; /* Set your desired max width */
-            margin: auto; /* Center align the carousel */
+            max-width: 600px; 
+            margin: auto;
         }
     </style>
 </head>

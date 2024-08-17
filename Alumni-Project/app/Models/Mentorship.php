@@ -13,13 +13,11 @@ class Mentorship extends Model
         'mentor_id',
     ];
 
-    // Define the relationship with Student
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
 
-    // Define the relationship with Mentor (Alumni)
     public function mentor()
     {
         return $this->belongsTo(Alumni::class, 'mentor_id');

@@ -8,7 +8,6 @@
             transition: opacity 1s ease-in-out;
         }
     </style>
-
     <div class="gap gray-bg">
         <div class="container">
             <div class="row">

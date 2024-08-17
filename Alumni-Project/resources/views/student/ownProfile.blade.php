@@ -155,7 +155,6 @@
                                                     @php
                                                         $linkedIn = $student->linkedin_profile;
                                                         $isUrl = strpos($linkedIn, '.com') !== false;
-                                                        // Add https if not present
                                                         if ($isUrl && !preg_match("/^http(s)?:\/\//", $linkedIn)) {
                                                             $linkedIn = 'https://' . $linkedIn;
                                                         }
@@ -177,7 +176,6 @@
                                                     @php
                                                         $github = $student->github_profile;
                                                         $isUrl = strpos($github, '.com') !== false;
-                                                        // Add https if not present
                                                         if ($isUrl && !preg_match("/^http(s)?:\/\//", $github)) {
                                                             $github = 'https://' . $github;
                                                         }

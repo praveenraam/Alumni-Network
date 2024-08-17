@@ -18,11 +18,7 @@ class GoogleService
         $this->client->setRedirectUri(env('GOOGLE_REDIRECT_URI'));
         $this->client->addScope('https://www.googleapis.com/auth/userinfo.email');
         $this->client->addScope('https://www.googleapis.com/auth/userinfo.profile');
-        $this->client->setHttpClient(new \GuzzleHttp\Client(['verify' => false])); // Disable SSL verification
-        // Set custom CA bundle path for Windows
-        // $this->client->setHttpClient(new \GuzzleHttp\Client([
-        //     'verify' => 'C:\certificates\cacert.pem' // Adjust this path to where you saved cacert.pem
-        // ]));
+        $this->client->setHttpClient(new \GuzzleHttp\Client(['verify' => false])); 
     }
 
     public function getAuthUrl()

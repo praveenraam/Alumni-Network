@@ -8,7 +8,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row merged20" id="page-contents">
-                        {{-- @include('layouts.includes.sidebar') --}}
                         <div class="col-lg-12">
                             <div class="central-meta item" style="display: inline-block;">
                                 <div class="user-post">

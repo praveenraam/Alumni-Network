@@ -3,10 +3,6 @@
 
 @push('bodycontent')
 <section>
-    <style>
-        /* Add any custom styles here */
-    </style>
-
     <div class="gap gray-bg">
         <div class="container">
             <div class="row">
@@ -48,12 +44,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- central-meta -->
-                        </div><!-- col-lg-9 -->
-                    </div><!-- row merged20 -->
-                </div><!-- col-lg-12 -->
-            </div><!-- row -->
-        </div><!-- container -->
-    </div><!-- gap gray-bg -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 @endpush

@@ -23,24 +23,11 @@
                                     </div>
                                 @endif
                                 <form method="post" action="{{route('alumni.update', $alumni->id)}}" enctype="multipart/form-data">
-                                        @csrf
-                                        <!-- Personal Information -->
-                                        {{-- <div class="form-group"> 
-                                            <input type="text" name="name" value="{{$alumni->name}}" >
-                                            <label class="control-label" for="full_name">Full Name</label><i class="mtrl-select"></i>
-                                        </div> --}}
-                                        {{-- <div class="form-group">
-                                            <input type="text" name="roll_no"  value="{{$alumni->roll_no}}">
-                                            <label class="control-label" for="roll_number">Roll Number</label><i class="mtrl-select"></i>
-                                        </div> --}}                                     
+                                        @csrf                                    
                                         <div class="form-group">
                                             <input type="email" name="email"  value="{{$alumni->email}}">
                                             <label class="control-label" for="email">Email Address</label><i class="mtrl-select"></i>
                                         </div>
-                                        {{-- <div class="form-group">
-                                            <input type="file" name="profile_picture"  >
-                                            <label class="control-label" for="profile_picture">Profile Picture</label><i class="mtrl-select"></i>
-                                        </div> --}}
                                         <div class="form-group">
                                             <input type="text" name="contact_no"  value="{{$alumni->contact_no}}">
                                             <label class="control-label" for="contact_no">Contact Number</label><i class="mtrl-select"></i>

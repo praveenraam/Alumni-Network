@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use App\Models\Post;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +21,7 @@ class PostController extends Controller
         $post = new Post();
         $post->user_id = Auth::id(); 
         $post->caption = $request->caption;
-        // dd($request);
+
         if ($request->hasFile('photo1')) {
             $photo1 = $request->file('photo1')->store('photo1', 'public');
             $post->photo1 = $photo1;

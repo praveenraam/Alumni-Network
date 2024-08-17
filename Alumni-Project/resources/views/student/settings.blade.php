@@ -15,18 +15,6 @@
                                 <h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
                                 <form method="post" action="{{route('student.update', $student->id)}}" enctype="multipart/form-data">
                                         @csrf
-                                        
-                                        <!-- Personal Information -->
-                                        {{-- <div class="form-group">
-                                            <input type="text" name="name" value="{{ $student->name }}" >
-                                            <label class="control-label" for="full_name">Name</label><i class="mtrl-select"></i>
-                                        </div> --}}
-
-                                        {{-- <div class="form-group">
-                                            <input type="text" name="email" value="{{ $student->email }}" >
-                                            <label class="control-label" for="name">email</label><i class="mtrl-select"></i>
-                                        </div> --}}
-
                                         <div class="form-group">
                                             <input type="date" name="date_of_birth" value="{{ $student->date_of_birth }}" >
                                             <label class="control-label" for="date_of_birth">Date of Birth</label><i class="mtrl-select"></i>

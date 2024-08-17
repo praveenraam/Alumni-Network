@@ -74,7 +74,7 @@
 
                 setTimeout(function() {
                     errorAlert.style.display = 'none';
-                }, 6000); // 1 second after starting the fade out
+                }, 6000);
             }
         });
     </script>

@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Add this line
+use Illuminate\Support\Facades\Auth; 
 
 class LogoutController extends Controller
 {
     public function logout(Request $request)
     {
-        Auth::logout(); // Logs out the user
+        Auth::logout(); 
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken(); 
 
-        $request->session()->invalidate(); // Clears the session
-
-        $request->session()->regenerateToken(); // Regenerates the CSRF token
-
-        return redirect('/login'); // Redirects to the login page
+        return redirect('/login'); 
     }
 }

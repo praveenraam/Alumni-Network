@@ -37,7 +37,7 @@ class TaskController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'assigned_date' => $request->input('assigned_date'),
-            'alumni_id' => Auth::id(), // Assuming the alumnus is authenticated
+            'alumni_id' => Auth::id(), 
         ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
@@ -52,7 +52,6 @@ class TaskController extends Controller
             return redirect()->route('available-mentors')->with('message', 'Please select a mentor to view tasks.');
         }
 
-        // Order tasks by the latest created
         $tasks = Task::where('alumni_id', $mentorship->mentor_id)
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -61,8 +60,7 @@ class TaskController extends Controller
     }
 
     public function index() {
-        // Fetch tasks created by the authenticated alumni
-        $mentorId = auth()->user()->id; // Assuming the user is authenticated and is an alumni
+        $mentorId = auth()->user()->id; 
         $tasks = Task::where('alumni_id', $mentorId)
                      ->orderBy('created_at', 'desc')
                      ->get();
@@ -72,9 +70,7 @@ class TaskController extends Controller
     
     public function showAdminTasks()
     {
-        $tasks = Task::with('alumni') // Eager load the alumni relationship
-                    ->orderBy('created_at', 'desc') // Order tasks by latest created
-                    ->get();
+        $tasks = Task::with('alumni')->orderBy('created_at', 'desc') ->get();
 
         return view('tasks.admin', compact('tasks'));
     }

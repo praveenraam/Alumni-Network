@@ -12,32 +12,26 @@
     <link rel="stylesheet" href="{{asset('assets//css/responsive.css')}}">
 
     <style>
-        
         .centre{
             text-align: center;
         }
-
         @media screen and (max-width: 980px){
           body{
             margin-top:10%;
             display: flex; flex-direction: row; align-items: center; justify-content: center;
           }
         }
-
         @media screen and (max-width: 640px) {
           body{
             margin-top: 50%;
             display: flex; flex-direction: row; align-items: center; justify-content: center;
           }
         }
-        
         .fade-out {
             opacity: 0;
             transition: opacity 1s ease-out;
         }
-
     </style>
-
 </head>
 <body>
 
@@ -73,21 +67,19 @@
         </form>
     </div>
 </div>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var errorMessage = document.getElementById('error-message');
-                if (errorMessage) {
-                    errorMessage.classList.add('fade-out');
-                    
-                    setTimeout(function() {
-                        errorMessage.remove();
-                    }, 1000); // Match the duration of the CSS transition
-                }
-            }, 3000);
-        });
-      </script>
-
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                errorMessage.classList.add('fade-out');
+                
+                setTimeout(function() {
+                    errorMessage.remove();
+                }, 1000);
+            }
+        }, 3000);
+    });
+    </script>
 </body>
 </html>

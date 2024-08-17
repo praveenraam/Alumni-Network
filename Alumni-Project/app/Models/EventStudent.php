@@ -10,16 +10,13 @@ class EventStudent extends Model
 
     protected $fillable = ['student_id', 'event_id'];
 
-    // Explicitly define the table name
     protected $table = 'event_student';
 
-    // Relationship to Student
     public function student()
     {
         return $this->belongsTo(Student::class);
     }
 
-    // Relationship to Event
     public function event()
     {
         return $this->belongsTo(Event::class);

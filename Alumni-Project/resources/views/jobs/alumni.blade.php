@@ -26,11 +26,7 @@
                                     @foreach($jobOpenings as $jobOpening)
                                         <li>
                                             <div class="nearly-pepls">
-                                                {{-- <figure>
-                                                <a href="time-line.html" title=""><img src="images/resources/friend-avatar9.jpg" alt=""></a>
-                                                </figure> --}}
                                                 <div class="pepl-info">
-                                                    {{-- <h4> {{ $jobOpening->title }}</h4> --}}
                                                     <h5 class="card-title">{{ $jobOpening->title }}</h5>
                                                     <p class="card-text">{{ $jobOpening->description }}</p>
                                                     <p class="card-text">
@@ -44,7 +40,6 @@
                                                     <p class="card-text"><strong>Type:</strong> {{ $jobOpening->type ? 'Job' : 'Internship' }}</p>
                                                     <p class="card-text"><strong>Posted By:</strong> {{ $jobOpening->alumni->name }}</p>
                                                     @php
-                                                    // Ensure the URL starts with http:// or https://
                                                     $link = $jobOpening->application_link;
                                                     if (!preg_match('/^https?:\/\//', $link)) {
                                                             $link = 'http://' . $link;

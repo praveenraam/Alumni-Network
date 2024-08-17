@@ -32,7 +32,6 @@
                                                    @endif
                                                 </div>
                                           </div>
-                                          
                                           <div style="display: flex; align-items: center; gap: 20px; margin-top: 20px;">
                                                 <button class="mtr-btn btn btn-primary" style="height: auto;" onclick="window.location.href='/admin/events/{{$event->id}}/registration'">
                                                    <span>Registrations</span>

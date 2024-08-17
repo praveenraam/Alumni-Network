@@ -1,6 +1,5 @@
 <div class="topbar stick">
   <div class="logo">
-      {{-- <a title href="#"><img src="{{ asset('images/logo2.png') }}" alt="Logo" /></a> --}}
   </div>
   <div class="top-area">
       <ul class="main-menu">
@@ -36,12 +35,6 @@
             </li>
           {{-- Section for Alumni --}}
           @elseif(Auth::guard('alumni')->check())
-              {{-- <li>
-                  <a href="#" title>Alumni Home</a>
-                  <ul>
-                      <li><a href="{{ url('alumni/dashboard') }}" title>Dashboard</a></li>
-                  </ul>
-              </li> --}}
               <li>
                 <a href="{{ url('alumni/') }}" title>News Feed</a>
               </li>
@@ -125,14 +118,6 @@
                 <li>
                     <a href="{{ url('/admin/forgot-password-request') }}" title>Reset Password List</a>
                 </li>
-          {{-- Guest Section --}}
-          @else
-              <li>
-                  <a href="{{ route('login') }}" title>Login</a>
-              </li>
-              <li>
-                  <a href="{{ route('register') }}" title>Register</a>
-              </li>
           @endif
 
       </ul>

@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 
 class PostReportsController extends Controller
 {
-    // Method to handle report by student
     public function reportByStudent($postID, $studentID)
     {
-        // Validate that the student and post exist
         $student = Student::findOrFail($studentID);
 
         PostReports::create([
@@ -22,10 +20,8 @@ class PostReportsController extends Controller
         return redirect()->back()->with('success', 'Report submitted successfully.');
     }
 
-    // Method to handle report by alumni
     public function reportByAlumni($postID, $alumniID)
     {
-        // Validate that the alumni and post exist
         $alumni = Alumni::findOrFail($alumniID);
 
         PostReports::create([

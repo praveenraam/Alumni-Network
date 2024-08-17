@@ -84,7 +84,7 @@
                     
                     setTimeout(function() {
                         errorMessage.remove();
-                    }, 1000); // Match the duration of the CSS transition
+                    }, 1000); 
                 }
             }, 3000);
         });

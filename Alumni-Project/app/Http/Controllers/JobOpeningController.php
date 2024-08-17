@@ -10,21 +10,16 @@ class JobOpeningController extends Controller
     
     public function store(Request $request)
     {
-        // Remove the dd("hello") debug statement
-        // dd("hello");
-
-        // Validate the form data
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'company' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'application_deadline' => 'required|date',
-            'type' => 'required|boolean', // Validate the type field
+            'type' => 'required|boolean', 
             'application_link' => 'nullable|string|max:255',
         ]);
 
-        // Create a new job opening
         JobOpening::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -36,7 +31,6 @@ class JobOpeningController extends Controller
             'application_link' => $request->application_link,
         ]);
 
-        // Redirect to the job openings index page with a success message
         return redirect()->route('jobOpenings.index')->with('success', 'Job opening created successfully.');
     }
 

@@ -32,8 +32,7 @@
                                                    <p class="card-text"><strong>Event Deadline:</strong> {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}</p>
                                                    <p class="card-text"><strong>Event Co-Ordinator:</strong> {{ $event->coordinator->name }}</p>
                                                    @php
-                                                      $studentId = Session::get('user_id'); // Get the student ID from the session
-                                                      // Ensure registrations is not null and check if the student is registered
+                                                      $studentId = Session::get('user_id'); 
                                                       $isRegistered = $event->registrations->contains('student_id', $studentId);
                                                    @endphp
                                                    @if($isRegistered)
@@ -41,9 +40,6 @@
                                                    @endif
                                                 </div>
                                           </div>
-                                          
-                                          
-                                          
                                           @if(!$isRegistered)
                                                 <form action="{{ route('events.register', $event->id) }}" method="post">
                                                    @csrf
@@ -52,7 +48,6 @@
                                           @endif
                                        </li>
                                     @endforeach
-
                                   </ul>
                                </div>
                             </div>

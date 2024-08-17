@@ -74,11 +74,6 @@
                                             <strong>Name:</strong> 
                                             {{ $student->name ?? 'Need to set' }}
                                         </li>
-                                        {{-- This is a different type, use if needed --}}
-                                        {{-- <li class="list-group-item">
-                                            <strong>Name:</strong> 
-                                            {{ $student->name ?? 'Need to set' }}
-                                        </li> --}}
                                         <li>
                                             <strong>Date of Birth:</strong> 
                                             {{ $student->date_of_birth ?? 'Need to set' }}
@@ -159,7 +154,6 @@
                                                     @php
                                                         $linkedIn = $student->linkedin_profile;
                                                         $isUrl = strpos($linkedIn, '.com') !== false;
-                                                        // Add https if not present
                                                         if ($isUrl && !preg_match("/^http(s)?:\/\//", $linkedIn)) {
                                                             $linkedIn = 'https://' . $linkedIn;
                                                         }
@@ -180,7 +174,6 @@
                                                     @php
                                                         $github = $student->github_profile;
                                                         $isUrl = strpos($github, '.com') !== false;
-                                                        // Add https if not present
                                                         if ($isUrl && !preg_match("/^http(s)?:\/\//", $github)) {
                                                             $github = 'https://' . $github;
                                                         }

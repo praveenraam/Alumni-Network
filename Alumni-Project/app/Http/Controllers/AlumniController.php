@@ -93,20 +93,15 @@ class AlumniController extends Controller
         $alumni = Alumni::findOrFail($id);
 
         if ($request->hasFile('profile_pic')) {
-            // Store the uploaded file
             $filePath = $request->file('profile_pic')->store('profile_pics', 'public');
 
-            // Optionally delete the old profile picture from storage
             if ($alumni->profile_picture) {
-                // You may need to adjust the path based on your storage structure
                 Storage::delete('public/' . $alumni->profile_picture);
             }
 
-            // Update the profile_picture column in the alumni table
             $alumni->profile_picture = $filePath;
         }
 
-        // Update other alumni information
         $alumni->update($ans);
 
         if ($request->input('mentorship_availability') == 0) {
@@ -122,7 +117,6 @@ class AlumniController extends Controller
     }
 
     public function store(Request $request){
-        // Validation
         $request->validate([
             'name' => 'required|string|max:255',
             'roll_no' => 'required|string|max:255|unique:alumnis',
@@ -133,7 +127,6 @@ class AlumniController extends Controller
             'department' => 'required|string',
         ]);
 
-        // Create the Alumni record
         Alumni::create([
             'name' => $request->name,
             'roll_no' => $request->roll_no,
@@ -155,11 +148,8 @@ class AlumniController extends Controller
     }
     public function deleteAlumni($id)
     {
-        // dd($id);
-
-        // Find the user by ID
         $user = Alumni::findOrFail($id);
-        // Delete the user
+
         $user->delete();
 
         return redirect()->view('admin.alumni.view')->with('success', 'User account has been deleted successfully.');
@@ -168,7 +158,7 @@ class AlumniController extends Controller
     public function availableMentors()
     {
         $availableMentors = Alumni::where('mentorship_availability', 1)->get();
-        $studentId = Session::get('user_id'); // Get the student ID from the session
+        $studentId = Session::get('user_id'); 
         $currentMentorship = Mentorship::where('student_id', $studentId)->first();
 
         return view('mentorships.available', compact('availableMentors', 'studentId', 'currentMentorship'));
@@ -178,7 +168,6 @@ class AlumniController extends Controller
     {
         $query = $request->input('query');
 
-        // Search in Alumni table
         $alumni = Alumni::where('name', 'LIKE', "%$query%")
             ->orWhere('email', 'LIKE', "%$query%")
             ->orWhere('roll_no', 'LIKE', "%$query%")
@@ -190,7 +179,6 @@ class AlumniController extends Controller
     {
         $query = $request->input('query');
 
-        // Search in Alumni table
         $alumni = Alumni::where('name', 'LIKE', "%$query%")
             ->orWhere('email', 'LIKE', "%$query%")
             ->orWhere('roll_no', 'LIKE', "%$query%")
@@ -202,7 +190,6 @@ class AlumniController extends Controller
     {
         $query = $request->input('query');
 
-        // Search in Alumni table
         $alumni = Alumni::where('name', 'LIKE', "%$query%")
             ->orWhere('email', 'LIKE', "%$query%")
             ->orWhere('roll_no', 'LIKE', "%$query%")

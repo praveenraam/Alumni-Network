@@ -12,7 +12,7 @@
                    <div class="col-lg-9">
                       <div class="central-meta">
                          <div class="frnds">
-                            <ul class="nav nav-tabs mb-3"> <!-- Added mb-3 class for margin-bottom -->
+                            <ul class="nav nav-tabs mb-3">
                                <li class="nav-item"><a class="active" href="" data-toggle="tab">Registered Students</a></li>
                             </ul>
                             <div class="tab-content">

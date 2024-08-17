@@ -9,8 +9,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row merged20" id="page-contents">
-                        {{-- @include('layouts.includes.sidebar') --}}
-
                         <div class="col-lg-12">
                             <div class="central-meta item" style="display: inline-block;">
                                 <div class="user-post">
@@ -46,7 +44,6 @@
                                                                     <td>{{ $request->roll_number }}</td>
                                                                     <td>{{ $request->created_at->format('d M Y') }}</td>
                                                                     <td>
-                                                                        <!-- Form to change the password and mark as resolved -->
                                                                         <form action="{{ route('admin.change-password', $request->roll_number) }}" method="POST" style="display:inline-block;">
                                                                             @csrf
                                                                             @method('PATCH')
@@ -57,10 +54,8 @@
                                                                             </div>
                                                                     </td>
                                                                     <td>
-                                                                        
-                                                                            <button type="submit" class="btn btn-success">Change Password & Mark as Resolved</button>
+                                                                        <button type="submit" class="btn btn-success">Change Password & Mark as Resolved</button>
                                                                         </form>
-                                                                        <!-- Form to ignore the request -->
                                                                         <form action="{{ route('admin.ignore-request', $request->id) }}" method="POST" style="display:inline-block; margin-left: 10px;">
                                                                             @csrf
                                                                             @method('PATCH')
@@ -78,7 +73,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

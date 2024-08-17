@@ -11,7 +11,6 @@ class MentorshipController extends Controller
         $studentId = $request->input('student_id');
         $mentorId = $request->input('mentor_id');
 
-        // Update or create the mentorship record
         Mentorship::updateOrCreate(
             ['student_id' => $studentId],
             ['mentor_id' => $mentorId]

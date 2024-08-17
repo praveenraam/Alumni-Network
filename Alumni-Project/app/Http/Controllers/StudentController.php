@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use App\Models\User;
-use Google\Service\Adsense\Alert;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use PDO;
 use Illuminate\Support\Facades\Session;
@@ -63,7 +60,6 @@ class StudentController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the request data
 
         $id = Session::get('user_id');
         if (!$id) {
@@ -81,7 +77,7 @@ class StudentController extends Controller
             'degree' => 'nullable|string|max:255',
             'department' => 'nullable|string|max:255',
             'current_semester' => 'nullable|string|max:255',
-            'cgpa' => 'nullable|numeric|between:0,10', // Adjust range based on CGPA scale
+            'cgpa' => 'nullable|numeric|between:0,10', 
             'interests' => 'nullable|string|max:255',
             'skills' => 'nullable|string|max:255',
             'programming_languages' => 'nullable|string|max:255',
@@ -93,33 +89,26 @@ class StudentController extends Controller
             'internships_experience' => 'nullable|string|max:255',
         ]);
 
-        // Find the student by ID or fail if not found
         $student = Student::findOrFail($id);
 
         if ($request->hasFile('student_profile_pic')) {
-            // Store the uploaded file
             $filePath = $request->file('student_profile_pic')->store('std_profile_pics', 'public');
             
-            // Optionally delete the old profile picture from storage
             if ($student->std_profile_picture) {
                 Storage::delete('public/' . $student->std_profile_picture);
             }
 
-            // Update the profile_picture column
             $student->std_profile_picture = $filePath;
         }
         
-        // Update the student record with validated data
         $student->update($res);
 
-        // Redirect back to the student index or other appropriate page with a success message
         return redirect()->route('student.index')->with('success', 'Student information updated successfully.');
     }
     public function AdminSearch(Request $request)
     {
         $query = $request->input('query');
 
-        // Search in Student table
         $students = Student::where('name', 'LIKE', "%$query%")
             ->orWhere('email', 'LIKE', "%$query%")
             ->orWhere('roll_number', 'LIKE', "%$query%")
@@ -131,7 +120,6 @@ class StudentController extends Controller
     {
         $query = $request->input('query');
 
-        // Search in Student table
         $students = Student::where('name', 'LIKE', "%$query%")
             ->orWhere('email', 'LIKE', "%$query%")
             ->orWhere('roll_number', 'LIKE', "%$query%")

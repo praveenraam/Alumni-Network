@@ -9,8 +9,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row merged20" id="page-contents">
-                        {{-- @include('layouts.includes.sidebar') --}}
-
                         <div class="col-lg-12">
                             <div class="central-meta item" style="display: inline-block;">
                                 <div class="user-post">
@@ -19,8 +17,6 @@
                                             <ins><a href="#" title="">Available Mentors</a></ins>
                                             <span>Select a mentor from the list below</span>
                                         </div>
-                                        
-                                        <!-- Display error messages -->
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
@@ -30,8 +26,6 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        
-                                        <!-- Display session messages -->
                                         @if (session('error'))
                                             <br><br>
                                             <div class="alert alert-danger">
@@ -88,12 +82,10 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 @endpush
