@@ -104,6 +104,9 @@ Route::middleware(['auth:admin'])->group(function () {
     //Delete tasks
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
+    // Forum
+    // Route::get('/admin/forum');
+
     // View Password reset requests
     Route::get('/admin/forgot-password-requests', [ForgotPasswordController::class, 'index'])->name('admin.forgot-password-requests');
     Route::patch('/admin/change-password/{roll_number}', [ForgotPasswordController::class, 'changePassword'])->name('admin.change-password');
