@@ -168,7 +168,6 @@ Route::middleware(['auth:alumni'])->group(function () {
 
     // View Forum
     Route::get('/alumni/forum',[ForumContoller::class,'viewQuestions']);
-    Route::get('/alumni/forum/add',[ForumContoller::class,'createQuestion']);
 
     // Change password
     Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');
@@ -214,6 +213,11 @@ Route::middleware(['auth:student'])->group(function () {
     Route::post('student/assign-mentor', [MentorshipController::class, 'assign'])->name('mentorship.assign');
     // View Tasks
     Route::get('student/student-tasks', [TaskController::class, 'showStudentTasks'])->name('student.tasks');
+
+    // Forum
+    Route::get('/student/forum', [ForumContoller::class, 'viewQuestions'])->name('forum.index');
+    Route::get('/student/forum/add', [ForumContoller::class, 'createQuestion']);
+    Route::post('/student/forum/add/post', [ForumContoller::class, 'storeQuestion'])->name('questions.store');
 
 });
 

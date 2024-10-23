@@ -24,9 +24,8 @@
                                <div class="tab-pane active fade show">
                                   <ul class="nearby-contct">
                                       <li>
-                                        <form action="" method="POST">
-                                           @csrf <!-- Include this to protect against CSRF attacks -->
-                                           
+                                        <form action="{{ route('questions.store') }}" method="POST">
+                                           @csrf
                                            <div class="form-group">                                              
                                              <input type="text" name="title" id="title"  required>
                                              <label for="title" class="control-label">Question Title</label>
@@ -36,12 +35,12 @@
 
                                            <div class="form-group">
                                              <textarea type="text" name="body" id="body" required></textarea>
-                                             <label for="title" class="control-label">Question Body</label>
+                                             <label for="body" class="control-label">Question Body</label>
                                              <i class="mtrl-select"></i>
                                            </div>
 
                                            <button type="submit" class="mtr-btn"><span>Add </span></button>
-                                          </form>
+                                        </form>
                                       </li>
                                   </ul>
                                </div>
