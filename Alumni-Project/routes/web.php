@@ -13,6 +13,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventStudentController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ForumContoller;
 use App\Http\Controllers\PostReportsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MentorshipController;
@@ -105,7 +106,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
     // Forum
-    // Route::get('/admin/forum');
+    Route::get('/admin/forum',[]);
 
     // View Password reset requests
     Route::get('/admin/forgot-password-requests', [ForgotPasswordController::class, 'index'])->name('admin.forgot-password-requests');
@@ -163,6 +164,11 @@ Route::middleware(['auth:alumni'])->group(function () {
     Route::get('alumni/tasks', [TaskController::class, 'index'])->name('tasks.index');
     // Delete Task
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+
+    // View Forum
+    Route::get('/alumni/forum',[ForumContoller::class,'viewQuestions']);
+    Route::get('/alumni/forum/add',[ForumContoller::class,'createQuestion']);
 
     // Change password
     Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');

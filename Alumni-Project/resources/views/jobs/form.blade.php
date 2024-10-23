@@ -26,11 +26,11 @@
                                  </div>
                                   <form action="{{Route('jobOpenings.insert')}}" method="POST">
                                     @csrf
-                                          <div class="form-group">
-                                             <input type="text" name="title" id="title"
-                                                required="required">
-                                             <label class="control-label" for="title">Job Title</label>
-                                             <i class="mtrl-select"></i>
+                                       <div class="form-group">
+                                          <input type="text" name="title" id="title"
+                                             required="required">
+                                          <label class="control-label" for="title">Job Title</label>
+                                          <i class="mtrl-select"></i>
                                        </div>
                                        <div class="form-group">
                                              <textarea name="description" id="description" required="required"></textarea>
