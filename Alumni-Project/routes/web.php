@@ -13,7 +13,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventStudentController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\ForumContoller;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PostReportsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MentorshipController;
@@ -167,7 +167,7 @@ Route::middleware(['auth:alumni'])->group(function () {
 
 
     // View Forum
-    Route::get('/alumni/forum',[ForumContoller::class,'viewQuestions']);
+    Route::get('/alumni/forum',[ForumController::class,'viewQuestions']);
 
     // Change password
     Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');
@@ -215,9 +215,9 @@ Route::middleware(['auth:student'])->group(function () {
     Route::get('student/student-tasks', [TaskController::class, 'showStudentTasks'])->name('student.tasks');
 
     // Forum
-    Route::get('/student/forum', [ForumContoller::class, 'viewQuestions'])->name('forum.index');
-    Route::get('/student/forum/add', [ForumContoller::class, 'createQuestion']);
-    Route::post('/student/forum/add/post', [ForumContoller::class, 'storeQuestion'])->name('questions.store');
+    Route::get('/student/forum', [ForumController::class, 'viewQuestions'])->name('forum.index');
+    Route::get('/student/forum/add', [ForumController::class, 'createQuestion']);
+    Route::post('/student/forum/add/post', [ForumController::class, 'storeQuestion'])->name('questions.store');
 
 });
 

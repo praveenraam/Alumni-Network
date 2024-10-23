@@ -6,7 +6,7 @@ use App\Models\Question;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
-class ForumContoller extends Controller
+class ForumController extends Controller
 {
     //
 
