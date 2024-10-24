@@ -3,11 +3,6 @@
 
 @push('bodycontent')
 <section>
-
-   <style>
-      /* Add any custom CSS styling here */
-   </style>
-
     <div class="gap gray-bg">
        <div class="container">
           <div class="row">
@@ -39,7 +34,7 @@
                                              <i class="mtrl-select"></i>
                                            </div>
 
-                                           <button type="submit" class="mtr-btn"><span>Add </span></button>
+                                           <button type="submit" class="mtr-btn"><span>Add</span></button>
                                         </form>
                                       </li>
                                   </ul>

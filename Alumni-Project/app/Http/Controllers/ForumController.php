@@ -11,7 +11,14 @@ class ForumController extends Controller
     //
 
     public function viewQuestions(){
-        return view('forum.viewQuestion');
+
+        $questions = Question::all();
+        
+        return view('forum.viewQuestion',compact('questions'));
+    }
+
+    public function viewAnswers(){
+        return view('forum.viewAnswers');
     }
 
     public function createQuestion(){
