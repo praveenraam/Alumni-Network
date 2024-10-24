@@ -3,6 +3,18 @@
 
 @push('bodycontent')
 <section>
+
+   <style>
+      .btn-light-blue {
+        background-color: #088dcd;
+        color: white;
+      }
+      .btn-light-blue:hover {
+        color: white;
+      }
+    </style>
+  
+
     <div class="gap gray-bg">
        <div class="container">
           <div class="row">
@@ -19,14 +31,15 @@
                                <div class="tab-pane active fade show">
                                     <ul class="nearby-contct">
                                         @foreach($questions as $question)
-                                          <a href="{{ route('question.answers', ['id' => $question->id]) }}">
-                                             <div class="nearby-pepls">
+                                          <li>
+                                             <div class="nearby-pepls" style="margin-bottom: 12px">
                                                    <div class="pepl-info">
                                                       <h5>{{ $question->title }}</h5>
                                                       <p>{{ $question->body }} </p>
                                                    </div>
+                                                   <a href="{{ route('question.answers', ['id' => $question->id]) }}" class="btn btn-light-blue" style="margin-left:10px">Answers Question</a>
                                              </div>
-                                          </a>
+                                          </li>
                                         @endforeach
                                     </ul>
                                </div>
