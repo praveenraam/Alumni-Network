@@ -168,7 +168,7 @@ Route::middleware(['auth:alumni'])->group(function () {
 
     // View Forum
     Route::get('/alumni/forum',[ForumController::class,'viewQuestions']);
-    Route::get('/alumni/forumAnswers',[ForumController::class,'viewAnswers'])->name('question.answers');
+    Route::get('/alumni/forum/answer/{id}',[ForumController::class,'viewAnswers'])->name('question.answers');
 
     // Change password
     Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');
@@ -219,6 +219,7 @@ Route::middleware(['auth:student'])->group(function () {
     Route::get('/student/forum', [ForumController::class, 'viewQuestions'])->name('forum.index');
     Route::get('/student/forum/add', [ForumController::class, 'createQuestion']);
     Route::post('/student/forum/add/post', [ForumController::class, 'storeQuestion'])->name('questions.store');
+    Route::get('/student/forum/answer/{id}',[ForumController::class,'viewAnswers']);
 
 });
 

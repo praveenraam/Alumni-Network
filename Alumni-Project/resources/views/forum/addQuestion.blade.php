@@ -27,7 +27,6 @@
                                              <i class="mtrl-select"></i>
                                            </div>
                                            
-
                                            <div class="form-group">
                                              <textarea type="text" name="body" id="body" required></textarea>
                                              <label for="body" class="control-label">Question Body</label>

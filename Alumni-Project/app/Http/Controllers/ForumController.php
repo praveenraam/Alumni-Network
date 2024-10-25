@@ -18,7 +18,7 @@ class ForumController extends Controller
     }
 
     public function viewAnswers(){
-        return view('forum.viewAnswers');
+        return view('forum.viewAnswer');
     }
 
     public function createQuestion(){

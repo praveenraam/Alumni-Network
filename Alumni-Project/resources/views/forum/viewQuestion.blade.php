@@ -37,7 +37,7 @@
                                                       <h5>{{ $question->title }}</h5>
                                                       <p>{{ $question->body }} </p>
                                                    </div>
-                                                   <a href="{{ route('question.answers', ['id' => $question->id]) }}" class="btn btn-light-blue" style="margin-left:10px">Answers Question</a>
+                                                   <a href="forum/answer/{{$question->id}}" class="btn btn-light-blue" style="margin-left:10px">Answers Question</a>
                                              </div>
                                           </li>
                                         @endforeach
