@@ -13,12 +13,12 @@ class ForumController extends Controller
     public function viewQuestions(){
 
         $questions = Question::all();
-        
         return view('forum.viewQuestion',compact('questions'));
     }
 
-    public function viewAnswers(){
-        return view('forum.viewAnswer');
+    public function viewAnswers($id){
+        $question = Question::with('answers')->findOrFail($id);
+        return view('forum.viewAnswer',compact('question'));
     }
 
     public function createQuestion(){
@@ -27,8 +27,6 @@ class ForumController extends Controller
 
     public function storeQuestion(Request $request)
     {   
-        // dump($request);
-
         $id = Session::get('user_id');
 
         // Validate the request data
