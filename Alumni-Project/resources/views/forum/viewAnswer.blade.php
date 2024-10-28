@@ -18,9 +18,27 @@
                             <div class="tab-content">
                                <div class="tab-pane active fade show">
                                   <ul class="nearby-contct">
+
+                                       <!-- Display the question details -->
+                                      <h3>{{ $question->title }}</h3>
+                                      <p>{{ $question->body }}</p>
+                                      <hr>
+                                      @if(Auth::guard('alumni')->check())
+                                          <form action="" method="POST" class="mb-4">
+                                             @csrf
+                                             <div class="form-group">
+                                                <textarea type="text" name="body" required required></textarea>
+                                                <label for="body" class="control-label">Answer the Question</label>
+                                             </div>
+                                             <button type="submit" class="mtr-btn"><span>Submit Answer</span></button>
+                                          </form>
+                                          <hr>
+                                       @endif
                                       <li>
+
                                         
                                       </li>
+                                      
                                   </ul>
                                </div>
                             </div>
