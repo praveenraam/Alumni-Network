@@ -24,7 +24,7 @@
                                       <p>{{ $question->body }}</p>
                                       <hr>
                                       @if(Auth::guard('alumni')->check())
-                                          <form action="" method="POST" class="mb-4">
+                                          <form action="{{ route('answers.store', $question->id) }}" method="POST">
                                              @csrf
                                              <div class="form-group">
                                                 <textarea type="text" name="body" required required></textarea>
@@ -34,11 +34,11 @@
                                           </form>
                                           <hr>
                                        @endif
+                                       
                                       <li>
 
                                         
                                       </li>
-                                      
                                   </ul>
                                </div>
                             </div>

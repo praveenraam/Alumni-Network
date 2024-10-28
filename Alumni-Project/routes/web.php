@@ -169,6 +169,7 @@ Route::middleware(['auth:alumni'])->group(function () {
     // View Forum
     Route::get('/alumni/forum',[ForumController::class,'viewQuestions']);
     Route::get('/alumni/forum/answer/{id}',[ForumController::class,'viewAnswers'])->name('question.answers');
+    Route::post('/alumni/forum/{id}/answer', [ForumController::class, 'storeAnswer'])->name('answers.store');
 
     // Change password
     Route::get('/alumni/change-password',[AlumniLoginController::class,'showChangePasswordForm'])->name('alumni.change-password.form');
