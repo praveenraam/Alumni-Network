@@ -17,9 +17,10 @@ class ForumController extends Controller
         return view('forum.viewQuestion',compact('questions'));
     }
 
-    public function viewAnswers($id){
-        $question = Question::with('answers')->findOrFail($id);
-        return view('forum.viewAnswer',compact('question'));
+    public function viewAnswers($id)
+    {
+        $question = Question::with('answers.alumni')->findOrFail($id);
+        return view('forum.viewAnswer', compact('question'));
     }
 
     public function createQuestion(){

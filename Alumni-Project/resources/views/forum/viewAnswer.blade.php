@@ -35,10 +35,16 @@
                                           <hr>
                                        @endif
                                        
-                                      <li>
-
-                                        
-                                      </li>
+                                       <ul class="nearby-contct">
+                                          @forelse($question->answers as $ans)
+                                              <li>
+                                                  <h5>{{ $ans->alumni->name ?? 'Anonymous' }}</h5>
+                                                  <p>{{ $ans->answer }}</p>
+                                              </li>
+                                          @empty
+                                              <li>No answers yet.</li>
+                                          @endforelse
+                                      </ul>
                                   </ul>
                                </div>
                             </div>
