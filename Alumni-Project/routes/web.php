@@ -8,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\StudentLoginController;
+use App\Http\Controllers\DemoapiController;
 use App\Http\Controllers\JobOpeningController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PostController;
