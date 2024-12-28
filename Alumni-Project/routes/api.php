@@ -10,6 +10,6 @@ Route::get('check-status', [DemoCheck::class, 'checkApiStatus']);
 // Alumni Login
 Route::post('/login', [AlumniLoginApiController::class, 'login']);
 
-Route::prefix('alumni')->group(function () {
-
+Route::prefix('alumni')->middleware('auth:sanctum')->group(function () {
+    Route::post('/updatePassword', [AlumniLoginApiController::class, 'updatePassword']);
 });
